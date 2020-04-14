@@ -1,5 +1,7 @@
 # hls-nix
 
+A nix-buildable derivation for [haskell-language-server](https://github.com/haskell/haskell-language-server)
+
 I've written this derivation just to test it out myself. Any suggestions are welcome!
 
 ## Installation
