@@ -36,15 +36,22 @@ let
           hls-src = pkgs.fetchFromGitHub {
             owner  = "haskell";
             repo   = "haskell-language-server";
-            rev    = "5570da98ac51cdd71a7b82b7c3538d2f892332c6";
-            sha256 = "1znij5l9f5k9jskj6f8vmbxsqmp861pc6w825nbjif7gz27izc7g";
+            rev    = "cb33c5b158d40e7a4220218cac4e98487317e39a";
+            sha256 = "125b5qnyb9i1j9s45kjawjz348pksikdx0i1cni54gqv4x9incbd";
           };
 
           ghcide-src = pkgs.fetchFromGitHub {
             owner  = "digital-asset";
             repo   = "ghcide";
-            rev    = "74311d255cc4a804de6ec69e6db4c13851c108f1";
-            sha256 = "0dcv3rk4knks104h6vpjyfh73d1aplh30p05kfhhv06v39zqg5d8";
+            rev    = "dc494d863fcce34863832f2cdb10c923e20a76b6";
+            sha256 = "03dybbrgi6ydknd60gjgcm452fnff0qk6glb75694vpj6n65fgp1";
+          };
+
+          hie-bios-src = pkgs.fetchFromGitHub {
+            owner  = "fendor";
+            repo   = "hie-bios";
+            rev    = "d5b7fc9bb3025b1d4d2ac9c48b588faf18dfce99";
+            sha256 = "1h1ipim3jbxap12vfddbmvbwwxshk563kpr1i4g3yv9apk5jhxm4";
           };
 
         in
@@ -54,6 +61,8 @@ let
           haskell-language-server = hlib.justStaticExecutables (self.callCabal2nix "haskell-language-server" hls-src {});
 
           ghcide = self.callCabal2nix "ghcide" ghcide-src {};
+
+          hie-bios = self.callCabal2nix "hie-bios" hie-bios-src {};
 
           ormolu = self.callHackageDirect {
             pkg = "ormolu";
@@ -107,12 +116,6 @@ let
             pkg = "regex-base";
             ver = "0.94.0.0";
             sha256 = "0x2ip8kn3sv599r7yc9dmdx7hgh5x632m45ga99ib5rnbn6kvn8x";
-          } {};
-
-          hie-bios = self.callHackageDirect {
-            pkg = "hie-bios";
-            ver = "0.4.0";
-            sha256 = "19lpg9ymd9656cy17vna8wr1hvzfal94gpm2d3xpnw1d5qr37z7x";
           } {};
 
           cabal-helper = self.callHackageDirect {
