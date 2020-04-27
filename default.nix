@@ -36,23 +36,31 @@ let
           hls-src = pkgs.fetchFromGitHub {
             owner  = "haskell";
             repo   = "haskell-language-server";
-            rev    = "cb33c5b158d40e7a4220218cac4e98487317e39a";
-            sha256 = "125b5qnyb9i1j9s45kjawjz348pksikdx0i1cni54gqv4x9incbd";
+            rev    = "2a58af80f4859239b47a0c915c4e04030c06b3b6";
+            sha256 = "0ykm7iqmmjhmgk19a0lamzmlbr2l0kp768r8xci4jngj1vx9qmnb";
           };
 
           ghcide-src = pkgs.fetchFromGitHub {
             owner  = "digital-asset";
             repo   = "ghcide";
-            rev    = "dc494d863fcce34863832f2cdb10c923e20a76b6";
-            sha256 = "03dybbrgi6ydknd60gjgcm452fnff0qk6glb75694vpj6n65fgp1";
+            rev    = "b0cd53d651855a8b1eb3b88c5b1d340ab31f7f30";
+            sha256 = "0ddwg3xh07pv4ffk2w7h7jh3iy23sqhz7y49c96frigi25v73b1m";
           };
 
           hie-bios-src = pkgs.fetchFromGitHub {
             owner  = "fendor";
             repo   = "hie-bios";
-            rev    = "d5b7fc9bb3025b1d4d2ac9c48b588faf18dfce99";
-            sha256 = "1h1ipim3jbxap12vfddbmvbwwxshk563kpr1i4g3yv9apk5jhxm4";
+            rev    = "87db34de1b10b03bb2c3d7f6bd3623bc1da96ba8";
+            sha256 = "124s2vhdzfx5r0sjyvqvl3irvvpxy4d64lasrg37p7bmpnndjjb0";
           };
+
+          shake-src = pkgs.fetchFromGitHub {
+            owner  = "mpickering";
+            repo   = "shake";
+            rev    = "4d56fe9f09bd3bd63ead541c571c756995da490a";
+            sha256 = "04jpgndny3h5cpm5hnk90h8wj3m1ap7d554cy0w42c2k2z0r2cvq";
+          };
+
 
         in
         {
@@ -64,10 +72,12 @@ let
 
           hie-bios = self.callCabal2nix "hie-bios" hie-bios-src {};
 
+          shake = self.callCabal2nix "shake" shake-src {};
+
           ormolu = self.callHackageDirect {
             pkg = "ormolu";
-            ver = "0.0.3.1";
-            sha256 = "0q1g3j8naw4xzn2m35cbf4vbi1077ys0dada5q0bvw8xvzhfb0xm";
+            ver = "0.0.5.0";
+            sha256 = "09zc5mra3n2kkbvvwvh7y0dh3fbs74i170xy66j90ndagqnfs16g";
           } {};
 
           ghc-check = self.callHackageDirect {
@@ -78,8 +88,14 @@ let
 
           ghc-lib-parser = self.callHackageDirect {
             pkg = "ghc-lib-parser";
-            ver = "8.8.2";
-            sha256 = "08gb6v5316m4xy1kclzbkr6bqrlg2lh0kplzg5lzsdx93bwcjyz8";
+            ver = "8.10.1.20200412";
+            sha256 = "05adhjbvkgpx0bwzv1klc2a356d23zqdbj502iapqksirjkk6cqj";
+          } {};
+
+          ghc-parser-ex = self.callHackageDirect {
+            pkg = "ghc-parser-ex";
+            ver = "8.10.0.4";
+            sha256 = "08gb6v5316m4xy1kclzbkr6bqrlg2lh0kplzg5lzsdx93bwcjyzb";
           } {};
 
           haddock-library = self.callHackageDirect {
@@ -106,12 +122,6 @@ let
             sha256 = "1a0l7kdjzp98smfp969mgkwrz60ph24xy0kh2dajnymnr8vd7b8g";
           } {};
 
-          shake = self.callHackageDirect {
-            pkg = "shake";
-            ver = "0.18.5";
-            sha256 = "0p9gb2px0k3jcdqgb8d7gdfh9swj1vchcs70r6sp5zkwrzzxlcaf";
-          } {};
-
           regex-base = self.callHackageDirect {
             pkg = "regex-base";
             ver = "0.94.0.0";
@@ -134,6 +144,12 @@ let
             pkg = "clock";
             ver = "0.7.2";
             sha256 = "167m4qrwfmrpv9q9hsiy8jsi5dmx9r2djivrp2q4cpwp251ckccl";
+          } {};
+
+          extra = self.callHackageDirect {
+            pkg = "extra";
+            ver = "1.6.21";
+            sha256 = "0x0k4gb0wmhy7q64mfm4wrcjhb2xg0l5bkk0q1jj0kgzyf8gvk67";
           } {};
 
         };
