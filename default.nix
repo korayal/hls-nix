@@ -36,22 +36,22 @@ let
           hls-src = pkgs.fetchFromGitHub {
             owner  = "haskell";
             repo   = "haskell-language-server";
-            rev    = "2a58af80f4859239b47a0c915c4e04030c06b3b6";
-            sha256 = "0ykm7iqmmjhmgk19a0lamzmlbr2l0kp768r8xci4jngj1vx9qmnb";
+            rev    = "019b02831595b6a3be6776bfc56060ab918876e7";
+            sha256 = "1nqhn208rnj229h1fvh227a526kyiiaq8pddgb26flwajrn0hrc2";
           };
 
           ghcide-src = pkgs.fetchFromGitHub {
             owner  = "digital-asset";
             repo   = "ghcide";
-            rev    = "b0cd53d651855a8b1eb3b88c5b1d340ab31f7f30";
-            sha256 = "0ddwg3xh07pv4ffk2w7h7jh3iy23sqhz7y49c96frigi25v73b1m";
+            rev    = "648a2a7dff78f59836b62f3eae9f8342a6a8ec71";
+            sha256 = "10sx7hknhrky461msipq2cwd12hvfg9nap5miyknv6vr6qpv1xb7";
           };
 
           hie-bios-src = pkgs.fetchFromGitHub {
             owner  = "fendor";
             repo   = "hie-bios";
-            rev    = "87db34de1b10b03bb2c3d7f6bd3623bc1da96ba8";
-            sha256 = "124s2vhdzfx5r0sjyvqvl3irvvpxy4d64lasrg37p7bmpnndjjb0";
+            rev    = "89d28817716a1c8df7e191f3a43c4504bc6379eb";
+            sha256 = "1hq5avgjbyx955qzgap3p1h3hb54jmxaii46gmgkv20ky7ycwkq6";
           };
 
           shake-src = pkgs.fetchFromGitHub {
@@ -59,6 +59,13 @@ let
             repo   = "shake";
             rev    = "4d56fe9f09bd3bd63ead541c571c756995da490a";
             sha256 = "04jpgndny3h5cpm5hnk90h8wj3m1ap7d554cy0w42c2k2z0r2cvq";
+          };
+
+          cabal-helper-src = pkgs.fetchFromGitHub {
+            owner  = "DanielG";
+            repo   = "cabal-helper";
+            rev    = "ce89f04a3211f158a754edc0d669ec1ef331041f";
+            sha256 = "1868xc07wxcs1y77zqd307yrxc0bp9j2g6arz5zpanxkczx6hk8c";
           };
 
 
@@ -73,6 +80,8 @@ let
           hie-bios = self.callCabal2nix "hie-bios" hie-bios-src {};
 
           shake = self.callCabal2nix "shake" shake-src {};
+
+          cabal-helper = self.callCabal2nix "cabal-helper" cabal-helper-src {};
 
           ormolu = self.callHackageDirect {
             pkg = "ormolu";
@@ -128,12 +137,6 @@ let
             sha256 = "0x2ip8kn3sv599r7yc9dmdx7hgh5x632m45ga99ib5rnbn6kvn8x";
           } {};
 
-          cabal-helper = self.callHackageDirect {
-            pkg = "cabal-helper";
-            ver = "1.0.0.0";
-            sha256 = "1av9vh1szhhnmjysv488padj0gm462yii8brs2kndj90a7fd40yv";
-          } {};
-
           temporary = self.callHackageDirect {
             pkg = "temporary";
             ver = "1.2.1";
@@ -150,6 +153,12 @@ let
             pkg = "extra";
             ver = "1.6.21";
             sha256 = "0x0k4gb0wmhy7q64mfm4wrcjhb2xg0l5bkk0q1jj0kgzyf8gvk67";
+          } {};
+
+          opentelemetry = self.callHackageDirect {
+            pkg = "opentelemetry";
+            ver = "0.3.0";
+            sha256 = "190yklzcdhyk5drg1vfgjs96c7qvw9p7s8ian5lhgqbnyy2n041m";
           } {};
 
         };
