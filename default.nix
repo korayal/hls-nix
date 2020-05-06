@@ -36,22 +36,22 @@ let
           hls-src = pkgs.fetchFromGitHub {
             owner  = "haskell";
             repo   = "haskell-language-server";
-            rev    = "019b02831595b6a3be6776bfc56060ab918876e7";
-            sha256 = "1nqhn208rnj229h1fvh227a526kyiiaq8pddgb26flwajrn0hrc2";
+            rev    = "6ddefac2a4e410c62b9652e1fb338bc34becad66";
+            sha256 = "1n7iralxbgqljkjr45z2bfg20j44a5gzf5mh6xp45skip6bk5g7n";
           };
 
           ghcide-src = pkgs.fetchFromGitHub {
             owner  = "digital-asset";
             repo   = "ghcide";
-            rev    = "648a2a7dff78f59836b62f3eae9f8342a6a8ec71";
-            sha256 = "10sx7hknhrky461msipq2cwd12hvfg9nap5miyknv6vr6qpv1xb7";
+            rev    = "174b17c0064d0fde72d1b0313572ad0c389ec263";
+            sha256 = "10hzspsr36n6q7ha9pn6l70s7icz2zzi19g3vab7ng2izrv09sfi";
           };
 
           hie-bios-src = pkgs.fetchFromGitHub {
             owner  = "fendor";
             repo   = "hie-bios";
-            rev    = "89d28817716a1c8df7e191f3a43c4504bc6379eb";
-            sha256 = "1hq5avgjbyx955qzgap3p1h3hb54jmxaii46gmgkv20ky7ycwkq6";
+            rev    = "f0abff9c855ea7e6624617df669825f3f62f723b";
+            sha256 = "0wakwnw5f7gmdjs9gjldvl9pxpp7ycj0agx9xplk5xrqzyic3d99";
           };
 
           shake-src = pkgs.fetchFromGitHub {
@@ -64,8 +64,8 @@ let
           cabal-helper-src = pkgs.fetchFromGitHub {
             owner  = "DanielG";
             repo   = "cabal-helper";
-            rev    = "ce89f04a3211f158a754edc0d669ec1ef331041f";
-            sha256 = "1868xc07wxcs1y77zqd307yrxc0bp9j2g6arz5zpanxkczx6hk8c";
+            rev    = "5b85a4b9e1c6463c94ffa595893ad02c9a3d2ec3";
+            sha256 = "1clra3gvhppack5w5kgllhcrfhcs4h21mk7w71pn17332smv4j0i";
           };
 
 
@@ -115,14 +115,14 @@ let
 
           haskell-lsp = self.callHackageDirect {
             pkg = "haskell-lsp";
-            ver = "0.21.0.0";
-            sha256 = "1j6nvaxppr3wly2cprv556yxr220qw1ghd3ac139iw16ihfjvz8a";
+            ver = "0.22.0.0";
+            sha256 = "1q3w46qcvzraxgmw75s7bl0qvb2fvff242r5vfx95sqska566b4m";
           } {};
 
           haskell-lsp-types = self.callHackageDirect {
             pkg = "haskell-lsp-types";
-            ver = "0.21.0.0";
-            sha256 = "0vq7v6k9szmwxh2haphgzb3c2xih6h5yyq57707ncg0ha75bhlll";
+            ver = "0.22.0.0";
+            sha256 = "1apjclphi2v6ggrdnbc0azxbb1gkfj3x1vkwpc8qd6lsrbyaf0n8";
           } {};
 
           regex-tdfa = self.callHackageDirect {
