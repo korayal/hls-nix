@@ -36,8 +36,8 @@ let
           hls-src = pkgs.fetchFromGitHub {
             owner  = "haskell";
             repo   = "haskell-language-server";
-            rev    = "6ddefac2a4e410c62b9652e1fb338bc34becad66";
-            sha256 = "1n7iralxbgqljkjr45z2bfg20j44a5gzf5mh6xp45skip6bk5g7n";
+            rev    = "08dd104a0436a6ede9bff6d1a64eac3ec89e615f";
+            sha256 = "1il1dbrj8jn423hmjg6jrjv3xa4id26ahg5i0fgzpzfxlzzs4hv5";
           };
 
           ghcide-src = pkgs.fetchFromGitHub {
@@ -50,15 +50,15 @@ let
           hie-bios-src = pkgs.fetchFromGitHub {
             owner  = "fendor";
             repo   = "hie-bios";
-            rev    = "f0abff9c855ea7e6624617df669825f3f62f723b";
-            sha256 = "0wakwnw5f7gmdjs9gjldvl9pxpp7ycj0agx9xplk5xrqzyic3d99";
+            rev    = "501cc337691cc9da45ff12db46d8b3af9a2a0eda";
+            sha256 = "1svz6krms6c23vmkj4xb4wdg7s6s41h6zwzb5gzcphy6jvgc8ppf";
           };
 
           shake-src = pkgs.fetchFromGitHub {
-            owner  = "mpickering";
+            owner  = "wz1000";
             repo   = "shake";
-            rev    = "4d56fe9f09bd3bd63ead541c571c756995da490a";
-            sha256 = "04jpgndny3h5cpm5hnk90h8wj3m1ap7d554cy0w42c2k2z0r2cvq";
+            rev    = "fb3859dca2e54d1bbb2c873e68ed225fa179fbef";
+            sha256 = "0sa0jiwgyvjsmjwpfcpvzg2p7277aa0dgra1mm6afh2rfnjphz8z";
           };
 
           cabal-helper-src = pkgs.fetchFromGitHub {
