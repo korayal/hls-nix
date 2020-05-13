@@ -36,22 +36,15 @@ let
           hls-src = pkgs.fetchFromGitHub {
             owner  = "haskell";
             repo   = "haskell-language-server";
-            rev    = "08dd104a0436a6ede9bff6d1a64eac3ec89e615f";
-            sha256 = "1il1dbrj8jn423hmjg6jrjv3xa4id26ahg5i0fgzpzfxlzzs4hv5";
+            rev    = "7edbf671f82d8004427c766d3976ff4fbc96acf9";
+            sha256 = "068r47ssr7xln3psd878p7ffzck1lmhsicimpsmkx0i21dfdfiaq";
           };
 
           ghcide-src = pkgs.fetchFromGitHub {
             owner  = "digital-asset";
             repo   = "ghcide";
-            rev    = "174b17c0064d0fde72d1b0313572ad0c389ec263";
-            sha256 = "10hzspsr36n6q7ha9pn6l70s7icz2zzi19g3vab7ng2izrv09sfi";
-          };
-
-          hie-bios-src = pkgs.fetchFromGitHub {
-            owner  = "fendor";
-            repo   = "hie-bios";
-            rev    = "501cc337691cc9da45ff12db46d8b3af9a2a0eda";
-            sha256 = "1svz6krms6c23vmkj4xb4wdg7s6s41h6zwzb5gzcphy6jvgc8ppf";
+            rev    = "5ca6556996543312e718559eab665fe3b1926b03";
+            sha256 = "1sni15wbj9jmrvhsfv31c0j587xhcfqkc0qg9pmlhf9zw4kgpghd";
           };
 
           shake-src = pkgs.fetchFromGitHub {
@@ -68,6 +61,12 @@ let
             sha256 = "1clra3gvhppack5w5kgllhcrfhcs4h21mk7w71pn17332smv4j0i";
           };
 
+          brittany-src = pkgs.fetchFromGitHub {
+            owner  = "lspitzner";
+            repo   = "brittany";
+            rev    = "231c2f5e94b2d242de9990f11673e466418a445c";
+            sha256 = "1r5hv20cmw03fvg5m17315vsmrxd2n47amz4w611rfd6aczjafjp";
+          };
 
         in
         {
@@ -75,13 +74,19 @@ let
 
           haskell-language-server = hlib.justStaticExecutables (self.callCabal2nix "haskell-language-server" hls-src {});
 
-          ghcide = self.callCabal2nix "ghcide" ghcide-src {};
+          brittany = self.callCabal2nix "brittany" brittany-src {};
 
-          hie-bios = self.callCabal2nix "hie-bios" hie-bios-src {};
+          ghcide = self.callCabal2nix "ghcide" ghcide-src {};
 
           shake = self.callCabal2nix "shake" shake-src {};
 
           cabal-helper = self.callCabal2nix "cabal-helper" cabal-helper-src {};
+
+          hie-bios = self.callHackageDirect {
+            pkg = "hie-bios";
+            ver = "0.5.0";
+            sha256 = "116nmpva5jmlgc2dgy8cm5wv6cinhzmga1l0432p305074w720r2";
+          } {};
 
           ormolu = self.callHackageDirect {
             pkg = "ormolu";
@@ -91,8 +96,8 @@ let
 
           ghc-check = self.callHackageDirect {
             pkg = "ghc-check";
-            ver = "0.1.0.3";
-            sha256 = "038llbvryk5y27jbdpbshp0zw5lw1j6m7qk7vx1n96ykqdzkh649";
+            ver = "0.3.0.1";
+            sha256 = "1dj909m09m24315x51vxvcl28936ahsw4mavbc53danif3wy09ns";
           } {};
 
           ghc-lib-parser = self.callHackageDirect {
@@ -151,14 +156,26 @@ let
 
           extra = self.callHackageDirect {
             pkg = "extra";
-            ver = "1.6.21";
-            sha256 = "0x0k4gb0wmhy7q64mfm4wrcjhb2xg0l5bkk0q1jj0kgzyf8gvk67";
+            ver = "1.7.1";
+            sha256 = "0n23dhsfjjdmprgmdsrrma8q8ys0zc4ab5vhzmiy2f9gkm0jg0pq";
           } {};
 
           opentelemetry = self.callHackageDirect {
             pkg = "opentelemetry";
-            ver = "0.3.0";
-            sha256 = "190yklzcdhyk5drg1vfgjs96c7qvw9p7s8ian5lhgqbnyy2n041m";
+            ver = "0.4.0";
+            sha256 = "1lzm1bmis835digmrm3ipgh5zhn99dbkcfp5daqcf8lzr9hg075p";
+          } {};
+
+          butcher = self.callHackageDirect {
+            pkg = "butcher";
+            ver = "1.3.3.1";
+            sha256 = "072gw6rd698i03ii9ib77f2b4vf9c9d51lagz6yh6qahj1z6bfi0";
+          } {};
+
+          semialign = self.callHackageDirect {
+            pkg = "semialign";
+            ver = "1.1";
+            sha256 = "190yklzcdhyk5drg1vfgjs96c7qvw9p7s8ian5lhgqbnyy2n041d";
           } {};
 
         };
