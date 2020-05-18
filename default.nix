@@ -36,8 +36,8 @@ let
           hls-src = pkgs.fetchFromGitHub {
             owner  = "haskell";
             repo   = "haskell-language-server";
-            rev    = "7edbf671f82d8004427c766d3976ff4fbc96acf9";
-            sha256 = "068r47ssr7xln3psd878p7ffzck1lmhsicimpsmkx0i21dfdfiaq";
+            rev    = "144457f37f9760fae19fb02e18f0471c0ba2204b";
+            sha256 = "1d9bpgahpfab3qhyighqlkf5x6dz5r9xxv45b98b157grga2zs89";
           };
 
           ghcide-src = pkgs.fetchFromGitHub {
@@ -54,18 +54,25 @@ let
             sha256 = "0sa0jiwgyvjsmjwpfcpvzg2p7277aa0dgra1mm6afh2rfnjphz8z";
           };
 
-          cabal-helper-src = pkgs.fetchFromGitHub {
-            owner  = "DanielG";
-            repo   = "cabal-helper";
-            rev    = "5b85a4b9e1c6463c94ffa595893ad02c9a3d2ec3";
-            sha256 = "1clra3gvhppack5w5kgllhcrfhcs4h21mk7w71pn17332smv4j0i";
-          };
-
           brittany-src = pkgs.fetchFromGitHub {
             owner  = "lspitzner";
             repo   = "brittany";
             rev    = "231c2f5e94b2d242de9990f11673e466418a445c";
             sha256 = "1r5hv20cmw03fvg5m17315vsmrxd2n47amz4w611rfd6aczjafjp";
+          };
+
+          cabal-plan-src = pkgs.fetchFromGitHub {
+            owner  = "peti";
+            repo   = "cabal-plan";
+            rev    = "894b76c0b6bf8f7d2f881431df1f13959a8fce87";
+            sha256 = "06iklj51d9kh9bhc42lrayypcpgkjrjvna59w920ln41rskhjr4y";
+          };
+
+          floskell-src = pkgs.fetchFromGitHub {
+            owner  = "jneira";
+            repo   = "floskell";
+            rev    = "78f888f46dae96922d855af1e6a00ea6bb856987";
+            sha256 = "0cggy3i4m8r6qrscyvfd420pjzb6g1lgdj1072bg2rhpg48q4rqp";
           };
 
         in
@@ -74,13 +81,27 @@ let
 
           haskell-language-server = hlib.justStaticExecutables (self.callCabal2nix "haskell-language-server" hls-src {});
 
-          brittany = self.callCabal2nix "brittany" brittany-src {};
-
           ghcide = self.callCabal2nix "ghcide" ghcide-src {};
 
           shake = self.callCabal2nix "shake" shake-src {};
 
-          cabal-helper = self.callCabal2nix "cabal-helper" cabal-helper-src {};
+          cabal-plan = self.callCabal2nix "cabal-plan" cabal-plan-src {};
+
+          floskell = self.callCabal2nix "floskell" floskell-src {};
+
+          brittany = self.callCabal2nix "brittany" brittany-src {};
+
+          cabal-helper = self.callHackageDirect {
+            pkg = "cabal-helper";
+            ver = "1.1.0.0";
+            sha256 = "1jgsffr7p34lz5y9psvqx8ihyf1rgv6r1ckm0n7i273b06b133ks";
+          } {};
+
+          Cabal = self.callHackageDirect {
+            pkg = "Cabal";
+            ver = "3.0.2.0";
+            sha256 = "0w03j3a5ma8li3hrn9xp49pmh9r4whxidm71x9c37x5p6igzihms";
+          } {};
 
           hie-bios = self.callHackageDirect {
             pkg = "hie-bios";
@@ -118,10 +139,34 @@ let
             sha256 = "12nr4qzas6fzn5p4ka27m5gs2rym0bgbfrym34yp0cd6rw9zdcl3";
           } {};
 
+          haddock-api = self.callHackageDirect {
+            pkg = "haddock-api";
+            ver = "2.22.0@rev:1";
+            sha256 = "12nr4qzas6fzn5p4ka27m5gs2rym0bgbfrym34yp0cd6rw9zdcla";
+          } {};
+
+          lens = self.callHackageDirect {
+            pkg = "lens";
+            ver = "4.18";
+            sha256 = "1cksr4y687vp81aw8p467ymmmywfprhzq6127gzkdhwl4jcwdybk";
+          } {};
+
+          type-equality = self.callHackageDirect {
+            pkg = "type-equality";
+            ver = "1";
+            sha256 = "0bcnl9cmk080glwfba7fhdvijj1iyw6w12hjm2sy06l0h9l0if1p";
+          } {};
+
           haskell-lsp = self.callHackageDirect {
             pkg = "haskell-lsp";
             ver = "0.22.0.0";
             sha256 = "1q3w46qcvzraxgmw75s7bl0qvb2fvff242r5vfx95sqska566b4m";
+          } {};
+
+          happy = self.callHackageDirect {
+            pkg = "happy";
+            ver = "1.19.12";
+            sha256 = "0n1ri85hf1h9q5pwvfnddc79ahr9bk7hz8kirzrlyb81qzc3lpc9";
           } {};
 
           haskell-lsp-types = self.callHackageDirect {
@@ -175,7 +220,55 @@ let
           semialign = self.callHackageDirect {
             pkg = "semialign";
             ver = "1.1";
-            sha256 = "190yklzcdhyk5drg1vfgjs96c7qvw9p7s8ian5lhgqbnyy2n041d";
+            sha256 = "01wj9sv44y95zvidclvl3qkxrg777n46f1qxwnzq0mw2a9mi6frz";
+          } {};
+
+          ansi-terminal = self.callHackageDirect {
+            pkg = "ansi-terminal";
+            ver = "0.10.3";
+            sha256 = "1aa8lh7pl054kz7i59iym49s8w473nhdqgc3pq16cp5v4358hw5k";
+          } {};
+
+          base-compat = self.callHackageDirect {
+            pkg = "base-compat";
+            ver = "0.11.0";
+            sha256 = "0dd9f7g5sn0nf2z8slrp113qdq368jrzsxqmhn54rf3bp37x74wd";
+          } {};
+
+          indexed-profunctors = self.callHackageDirect {
+            pkg = "indexed-profunctors";
+            ver = "0.1";
+            sha256 = "0vpgbymfhnvip90jwvyniqi34lhz5n3ni1f21g81n5rap0q140za";
+          } {};
+
+          optics-core = self.callHackageDirect {
+            pkg = "optics-core";
+            ver = "0.2";
+            sha256 = "0ipshb2yrqwzj1prf08acwpfq2lhcrawnanwpzbpggdhabrfga2h";
+          } {};
+
+          optparse-applicative = self.callHackageDirect {
+            pkg = "optparse-applicative";
+            ver = "0.15.1.0";
+            sha256 = "1mii408cscjvids2xqdcy2p18dvanb0qc0q1bi7234r23wz60ajk";
+          } {};
+
+          aeson = self.callHackageDirect {
+            pkg = "aeson";
+            ver = "1.4.6.0";
+            sha256 = "05rj0fv5y65dk17v24p3qypvrakkhdj41vrxnyk4wimgaw2g5lq4";
+          } {};
+
+          aeson-pretty = self.callHackageDirect {
+            pkg = "aeson-pretty";
+            ver = "0.8.8";
+            sha256 = "1414yr5hpm9l1ya69864zrrd40sa513k7j67dkydrwmfldrbl7lv";
+          } {};
+
+          topograph = self.callHackageDirect {
+            pkg = "topograph";
+            ver = "1.0.0.1";
+            sha256 = "1q7gn0x3hrmxpgk5rwc9pmidr2nlxs8zaiza55k6paxd7lnjyh4m";
           } {};
 
         };
