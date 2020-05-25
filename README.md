@@ -2,20 +2,31 @@
 
 A nix-buildable derivation for [haskell-language-server](https://github.com/haskell/haskell-language-server)
 
-I've written this derivation just to test it out myself. Any suggestions are welcome!
+# Getting started
 
-## Installation
+## 1. Use Cachix to avoid compilation (optional if you like compiling for 2h)
 
-This build has a cachix cache already available, and it can be setup with the
-commands below:
+    $ nix-env -iA cachix -f https://cachix.org/api/v1/install
+    $ cachix use korayal-hls
 
+## 2. Install ghcide
+
+Currently available for `ghc865`, `ghc864`, `ghc883`, `ghc882`, `ghc8101`:
+
+### On NixOS
+
+```nix
+environment.systemPackages = [
+  (import (builtins.fetchTarball "https://github.com/korayal/hls-nix/tarball/master") {}).hls-ghc865
+];
 ```
-$ nix-env -iA cachix -f https://cachix.org/api/v1/install
-$ cachix use korayal-hls
-```
 
-Install with the command below:
+### With Nix
 
-```
-nix-env -iA hpkgs.haskell-language-server -f https://github.com/korayal/hls-nix/tarball/master
-```
+    $ nix-env -iA hls-ghc865 -f https://github.com/korayal/hls-nix/tarball/master
+
+# 3. [Continue by following upstream instructions](https://github.com/haskell/haskell-language-server)
+
+# Updating
+
+    ./update

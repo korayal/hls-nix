@@ -1,0 +1,62 @@
+{
+    "ghcide": {
+        "branch": "hls-az",
+        "description": "",
+        "homepage": "",
+        "owner": "alanz",
+        "repo": "ghcide",
+        "rev": "024d4ec94dea2380cdeee6958ab7c49cff846d12",
+        "sha256": "1rw6j8m2x5ls5sfqpzgp1n4ssk79r1ci4fr1za897zw7mqna1d94",
+        "type": "tarball",
+        "url": "https://github.com/alanz/ghcide/archive/024d4ec94dea2380cdeee6958ab7c49cff846d12.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "haskell-language-server": {
+        "branch": "master",
+        "description": "Integration point for ghcide and haskell-ide-engine. One IDE to rule them all.",
+        "homepage": "",
+        "owner": "haskell",
+        "repo": "haskell-language-server",
+        "rev": "28150bc867f2e5010173a4af05363eb48bfc35f2",
+        "sha256": "1152gsy4cd6i75i49in6jgijlv0xxszkhb7cwpkqv771432ligva",
+        "type": "tarball",
+        "url": "https://github.com/haskell/haskell-language-server/archive/28150bc867f2e5010173a4af05363eb48bfc35f2.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "haskell.nix": {
+        "branch": "master",
+        "description": "Alternative Haskell Infrastructure for Nixpkgs",
+        "homepage": "https://input-output-hk.github.io/haskell.nix",
+        "owner": "input-output-hk",
+        "repo": "haskell.nix",
+        "rev": "3c54d5781cc2d165d948114f0479d58cf1c74f07",
+        "sha256": "056lzfvw44ndnrnkwkap4d5nfwd68skr9nc924b3v644jwl3nql1",
+        "type": "tarball",
+        "url": "https://github.com/input-output-hk/haskell.nix/archive/3c54d5781cc2d165d948114f0479d58cf1c74f07.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "niv": {
+        "branch": "master",
+        "description": "Easy dependency management for Nix projects",
+        "homepage": "https://github.com/nmattia/niv",
+        "owner": "nmattia",
+        "repo": "niv",
+        "rev": "f73bf8d584148677b01859677a63191c31911eae",
+        "sha256": "08j7msxkv452pyxnh0sgn6h9930i5mk9mszba49bj5401gzmfb8b",
+        "type": "tarball",
+        "url": "https://github.com/nmattia/niv/archive/f73bf8d584148677b01859677a63191c31911eae.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nixpkgs": {
+        "branch": "release-20.03",
+        "description": "A read-only mirror of NixOS/nixpkgs tracking the released channels. Send issues and PRs to",
+        "homepage": "https://github.com/NixOS/nixpkgs",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "136e4c1fb0e2daaa8d330739e45f220e3e7926e2",
+        "sha256": "0rrm6cqb3qcypb63b1wz4k2f99jh0lplcgs80vmgkfpbzjvc4w8x",
+        "type": "tarball",
+        "url": "https://github.com/NixOS/nixpkgs/archive/136e4c1fb0e2daaa8d330739e45f220e3e7926e2.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    }
+}
