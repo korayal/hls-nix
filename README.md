@@ -26,7 +26,3 @@ environment.systemPackages = [
     $ nix-env -iA hls-ghc865 -f https://github.com/korayal/hls-nix/tarball/master
 
 # 3. [Continue by following upstream instructions](https://github.com/haskell/haskell-language-server)
-
-# Updating
-
-    ./update
