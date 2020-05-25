@@ -7,7 +7,13 @@ let
     let
       mkPackages = { ghc, stackYaml }:
         pkgs.haskell-nix.stackProject {
-            src = sources.haskell-language-server;
+            src = pkgs.fetchFromGitHub {
+              owner = "korayal";
+              repo = "haskell-language-server";
+              rev = "2284facb9f06d05055cef88dcaffc24a1ce8255c";
+              sha256 = "0y9q940i5n1q7fwx5cvgmh3x7v00320i34rfa39chwmb8csyp7w1";
+              fetchSubmodules = true;
+            };
             inherit stackYaml;
             modules = [({config, ...}: {
               ghc.package = ghc;

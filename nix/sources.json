@@ -1,28 +1,4 @@
 {
-    "ghcide": {
-        "branch": "hls-az",
-        "description": "",
-        "homepage": "",
-        "owner": "alanz",
-        "repo": "ghcide",
-        "rev": "024d4ec94dea2380cdeee6958ab7c49cff846d12",
-        "sha256": "1rw6j8m2x5ls5sfqpzgp1n4ssk79r1ci4fr1za897zw7mqna1d94",
-        "type": "tarball",
-        "url": "https://github.com/alanz/ghcide/archive/024d4ec94dea2380cdeee6958ab7c49cff846d12.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
-    "haskell-language-server": {
-        "branch": "master",
-        "description": "Integration point for ghcide and haskell-ide-engine. One IDE to rule them all.",
-        "homepage": "",
-        "owner": "haskell",
-        "repo": "haskell-language-server",
-        "rev": "28150bc867f2e5010173a4af05363eb48bfc35f2",
-        "sha256": "1152gsy4cd6i75i49in6jgijlv0xxszkhb7cwpkqv771432ligva",
-        "type": "tarball",
-        "url": "https://github.com/haskell/haskell-language-server/archive/28150bc867f2e5010173a4af05363eb48bfc35f2.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
     "haskell.nix": {
         "branch": "master",
         "description": "Alternative Haskell Infrastructure for Nixpkgs",
