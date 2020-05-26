@@ -29,7 +29,7 @@ let
           };
       mkHls = args@{...}:
         let packages = mkPackages ({ghc = pkgs.haskell-nix.compiler.ghc865; stackYaml = "stack.yaml"; } // args);
-        in packages.haskell-language-server.components.exes.haskell-language-server // { inherit packages; };
+        in packages.haskell-language-server.components.exes // { inherit packages; };
     in { export = {
           hls-ghc864 = mkHls { ghc = pkgs.haskell-nix.compiler.ghc864; stackYaml = "stack-8.6.4.yaml"; };
           hls-ghc865 = mkHls { ghc = pkgs.haskell-nix.compiler.ghc865; stackYaml = "stack-8.6.5.yaml"; };
