@@ -10,8 +10,8 @@ let
             src = pkgs.fetchFromGitHub {
               owner = "korayal";
               repo = "haskell-language-server";
-              rev = "2284facb9f06d05055cef88dcaffc24a1ce8255c";
-              sha256 = "0y9q940i5n1q7fwx5cvgmh3x7v00320i34rfa39chwmb8csyp7w1";
+              rev = "c3ac40ae4ce04598e3355eddb72069fc0fc6f74a";
+              sha256 = "1myh8zv20f5j3dcl4r0jfvlj2dhb5jhfvimlhw80jhp8f38qnab3";
               fetchSubmodules = true;
             };
             inherit stackYaml;
