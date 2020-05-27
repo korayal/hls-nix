@@ -17,7 +17,7 @@ Currently available for `ghc865`, `ghc864`, `ghc883`, `ghc882`, `ghc8101`:
 
 ```nix
 environment.systemPackages = [
-  (import (builtins.fetchTarball "https://github.com/korayal/hls-nix/tarball/master") {}).hls-ghc865
+  (import (builtins.fetchTarball "https://github.com/korayal/hls-nix/tarball/master") {}).hls-ghc865.haskell-language-server
 ];
 ```
 
