@@ -36,15 +36,15 @@ let
           hls-src = pkgs.fetchFromGitHub {
             owner  = "haskell";
             repo   = "haskell-language-server";
-            rev    = "144457f37f9760fae19fb02e18f0471c0ba2204b";
-            sha256 = "1d9bpgahpfab3qhyighqlkf5x6dz5r9xxv45b98b157grga2zs89";
+            rev    = "b6cac64561637eeb52c2386452ae4a94196dd0f8";
+            sha256 = "1c1wfwddgcy8gxx53rvf5sj6g5f0vjsv8vwmnan9asx5jrskz51p";
           };
 
           ghcide-src = pkgs.fetchFromGitHub {
             owner  = "digital-asset";
             repo   = "ghcide";
-            rev    = "5ca6556996543312e718559eab665fe3b1926b03";
-            sha256 = "1sni15wbj9jmrvhsfv31c0j587xhcfqkc0qg9pmlhf9zw4kgpghd";
+            rev    = "0db329a62375f086725571aa14e52f7b9f85ac3b";
+            sha256 = "02249zask2c2rr2npw7aj0ihmwj9a7kxzg38ibrb9r06wq93lrj7";
           };
 
           shake-src = pkgs.fetchFromGitHub {
@@ -68,13 +68,6 @@ let
             sha256 = "06iklj51d9kh9bhc42lrayypcpgkjrjvna59w920ln41rskhjr4y";
           };
 
-          floskell-src = pkgs.fetchFromGitHub {
-            owner  = "jneira";
-            repo   = "floskell";
-            rev    = "78f888f46dae96922d855af1e6a00ea6bb856987";
-            sha256 = "0cggy3i4m8r6qrscyvfd420pjzb6g1lgdj1072bg2rhpg48q4rqp";
-          };
-
         in
         {
           mkDerivation = disableOptionalHaskellBuildSteps super;
@@ -87,9 +80,13 @@ let
 
           cabal-plan = self.callCabal2nix "cabal-plan" cabal-plan-src {};
 
-          floskell = self.callCabal2nix "floskell" floskell-src {};
-
           brittany = self.callCabal2nix "brittany" brittany-src {};
+
+          floskell = self.callHackageDirect {
+            pkg = "floskell";
+            ver = "0.10.3";
+            sha256 = "0fqyz16m4097hm3s2acgzn8623ijvfl80id9ghhq68859dsjdz91";
+          } {};
 
           cabal-helper = self.callHackageDirect {
             pkg = "cabal-helper";
@@ -123,8 +120,8 @@ let
 
           ghc-lib-parser = self.callHackageDirect {
             pkg = "ghc-lib-parser";
-            ver = "8.10.1.20200412";
-            sha256 = "05adhjbvkgpx0bwzv1klc2a356d23zqdbj502iapqksirjkk6cqj";
+            ver = "8.10.1.20200523";
+            sha256 = "1fnhqb9l0cg58lalrrn4ms48rnnzlyb7dqa9h2g21m9287q5y6gs";
           } {};
 
           ghc-parser-ex = self.callHackageDirect {
