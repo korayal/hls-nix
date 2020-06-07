@@ -36,15 +36,15 @@ let
           hls-src = pkgs.fetchFromGitHub {
             owner  = "haskell";
             repo   = "haskell-language-server";
-            rev    = "b6cac64561637eeb52c2386452ae4a94196dd0f8";
+            rev    = "5896026209501de6f0badef0b72716e90443e5e8";
             sha256 = "1c1wfwddgcy8gxx53rvf5sj6g5f0vjsv8vwmnan9asx5jrskz51p";
           };
 
           ghcide-src = pkgs.fetchFromGitHub {
             owner  = "digital-asset";
             repo   = "ghcide";
-            rev    = "0db329a62375f086725571aa14e52f7b9f85ac3b";
-            sha256 = "02249zask2c2rr2npw7aj0ihmwj9a7kxzg38ibrb9r06wq93lrj7";
+            rev    = "3ee692a4cdb98792c371765c9f8adb5237d0a515";
+            sha256 = "0ds9d52g7bh987xz7n78c7d5i88qasyn3ihyfxay5i806hgcnama";
           };
 
           shake-src = pkgs.fetchFromGitHub {
