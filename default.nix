@@ -36,12 +36,12 @@ let
           hls-src = pkgs.fetchFromGitHub {
             owner  = "haskell";
             repo   = "haskell-language-server";
-            rev    = "5896026209501de6f0badef0b72716e90443e5e8";
-            sha256 = "1c1wfwddgcy8gxx53rvf5sj6g5f0vjsv8vwmnan9asx5jrskz51p";
+            rev    = "77dda30c5a11871d7c87de8d3adde4c2d9c8b429";
+            sha256 = "19rlx05wi041nc483q99ygvz93782zvmsb98pr0iqrlg5s8m0fii";
           };
 
           ghcide-src = pkgs.fetchFromGitHub {
-            owner  = "digital-asset";
+            owner  = "alanz";
             repo   = "ghcide";
             rev    = "3ee692a4cdb98792c371765c9f8adb5237d0a515";
             sha256 = "0ds9d52g7bh987xz7n78c7d5i88qasyn3ihyfxay5i806hgcnama";
@@ -266,6 +266,24 @@ let
             pkg = "topograph";
             ver = "1.0.0.1";
             sha256 = "1q7gn0x3hrmxpgk5rwc9pmidr2nlxs8zaiza55k6paxd7lnjyh4m";
+          } {};
+
+          stylish-haskell = self.callHackageDirect {
+            pkg = "stylish-haskell";
+            ver = "0.11.0.0";
+            sha256 = "1a6jijj1lxmi20m9ddiwlnlf3x6qy3dw4si1pvfk9rpjv9azcydk";
+          } {};
+
+          HsYAML = self.callHackageDirect {
+            pkg = "HsYAML";
+            ver = "0.2.1.0";
+            sha256 = "0r2034sw633npz7d2i4brljb5q1aham7kjz6r6vfxx8qqb23dwnc";
+          } {};
+
+          HsYAML-aeson = self.callHackageDirect {
+            pkg = "HsYAML-aeson";
+            ver = "0.2.0.0";
+            sha256 = "0zgcp93y93h7rsg9dv202hf3l6sqr95iadd67lmfclb0npfs640m";
           } {};
 
         };
