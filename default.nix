@@ -36,22 +36,15 @@ let
           hls-src = pkgs.fetchFromGitHub {
             owner  = "haskell";
             repo   = "haskell-language-server";
-            rev    = "77dda30c5a11871d7c87de8d3adde4c2d9c8b429";
-            sha256 = "19rlx05wi041nc483q99ygvz93782zvmsb98pr0iqrlg5s8m0fii";
+            rev    = "26892d6d8fa411803f58ca87b463c8a434df33e2";
+            sha256 = "0xc3d2dwrv6dlyls6pgifq3nq4hwwrabcblh2xswr21nhrd8jbq9";
           };
 
           ghcide-src = pkgs.fetchFromGitHub {
-            owner  = "alanz";
-            repo   = "ghcide";
-            rev    = "3ee692a4cdb98792c371765c9f8adb5237d0a515";
-            sha256 = "0ds9d52g7bh987xz7n78c7d5i88qasyn3ihyfxay5i806hgcnama";
-          };
-
-          shake-src = pkgs.fetchFromGitHub {
             owner  = "wz1000";
-            repo   = "shake";
-            rev    = "fb3859dca2e54d1bbb2c873e68ed225fa179fbef";
-            sha256 = "0sa0jiwgyvjsmjwpfcpvzg2p7277aa0dgra1mm6afh2rfnjphz8z";
+            repo   = "ghcide";
+            rev    = "977663126b938cd99c8746150458f9bd1031f01a";
+            sha256 = "1pdr7lil1hlb6a9jfy8qkl85p73p051sd9qzl76w1xfwx71iz48c";
           };
 
           brittany-src = pkgs.fetchFromGitHub {
@@ -75,8 +68,6 @@ let
           haskell-language-server = hlib.justStaticExecutables (self.callCabal2nix "haskell-language-server" hls-src {});
 
           ghcide = self.callCabal2nix "ghcide" ghcide-src {};
-
-          shake = self.callCabal2nix "shake" shake-src {};
 
           cabal-plan = self.callCabal2nix "cabal-plan" cabal-plan-src {};
 
@@ -114,8 +105,8 @@ let
 
           ghc-check = self.callHackageDirect {
             pkg = "ghc-check";
-            ver = "0.3.0.1";
-            sha256 = "1dj909m09m24315x51vxvcl28936ahsw4mavbc53danif3wy09ns";
+            ver = "0.5.0.1";
+            sha256 = "1zlbss7h6infzhhpilvkpk50gxypkb2li8fspi69jlll5l7wqi3d";
           } {};
 
           ghc-lib-parser = self.callHackageDirect {
@@ -284,6 +275,18 @@ let
             pkg = "HsYAML-aeson";
             ver = "0.2.0.0";
             sha256 = "0zgcp93y93h7rsg9dv202hf3l6sqr95iadd67lmfclb0npfs640m";
+          } {};
+
+          lsp-test = self.callHackageDirect {
+            pkg = "lsp-test";
+            ver = "0.11.0.2";
+            sha256 = "0zgcp93y93h7rsg9dv202hf3l6sqr95iadd67lmfclb0npfs640z";
+          } {};
+
+          shake = self.callHackageDirect {
+            pkg = "shake";
+            ver = "0.19.1";
+            sha256 = "14myzmdywbcwgx03f454ymf5zjirs7wj1bcnhhsf0w1ck122y8q3";
           } {};
 
         };
