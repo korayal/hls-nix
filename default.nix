@@ -36,15 +36,15 @@ let
           hls-src = pkgs.fetchFromGitHub {
             owner  = "haskell";
             repo   = "haskell-language-server";
-            rev    = "26892d6d8fa411803f58ca87b463c8a434df33e2";
-            sha256 = "0xc3d2dwrv6dlyls6pgifq3nq4hwwrabcblh2xswr21nhrd8jbq9";
+            rev    = "77c31c37aceb822ceb5b60f11f4933419353c675";
+            sha256 = "0j8na4c791xnprnl1rhmwlv800q7svqca6bspi7kqwcmyzvc931h";
           };
 
           ghcide-src = pkgs.fetchFromGitHub {
             owner  = "wz1000";
             repo   = "ghcide";
-            rev    = "977663126b938cd99c8746150458f9bd1031f01a";
-            sha256 = "1pdr7lil1hlb6a9jfy8qkl85p73p051sd9qzl76w1xfwx71iz48c";
+            rev    = "cc09b6d4cf03efa645c682347c62850c2291be25";
+            sha256 = "0rifbrfvbgv7szgwc5apzb0i5fbkr2spzqvwg5kzng5b4zrf9a9d";
           };
 
           brittany-src = pkgs.fetchFromGitHub {
@@ -69,8 +69,6 @@ let
 
           ghcide = self.callCabal2nix "ghcide" ghcide-src {};
 
-          cabal-plan = self.callCabal2nix "cabal-plan" cabal-plan-src {};
-
           brittany = self.callCabal2nix "brittany" brittany-src {};
 
           floskell = self.callHackageDirect {
@@ -84,6 +82,8 @@ let
             ver = "1.1.0.0";
             sha256 = "1jgsffr7p34lz5y9psvqx8ihyf1rgv6r1ckm0n7i273b06b133ks";
           } {};
+
+          cabal-plan = self.callCabal2nix "cabal-plan" cabal-plan-src {};
 
           Cabal = self.callHackageDirect {
             pkg = "Cabal";
@@ -189,20 +189,20 @@ let
 
           extra = self.callHackageDirect {
             pkg = "extra";
-            ver = "1.7.1";
+            ver = "1.7.3";
             sha256 = "0n23dhsfjjdmprgmdsrrma8q8ys0zc4ab5vhzmiy2f9gkm0jg0pq";
           } {};
 
           opentelemetry = self.callHackageDirect {
             pkg = "opentelemetry";
-            ver = "0.4.0";
+            ver = "0.4.2";
             sha256 = "1lzm1bmis835digmrm3ipgh5zhn99dbkcfp5daqcf8lzr9hg075p";
           } {};
 
           butcher = self.callHackageDirect {
             pkg = "butcher";
-            ver = "1.3.3.1";
-            sha256 = "072gw6rd698i03ii9ib77f2b4vf9c9d51lagz6yh6qahj1z6bfi0";
+            ver = "1.3.3.2";
+            sha256 = "08lj4yy6951rjg3kr8613mrdk6pcwaidcx8pg9dvl4vpaswlpjib";
           } {};
 
           semialign = self.callHackageDirect {
