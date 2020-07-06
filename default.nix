@@ -43,8 +43,8 @@ let
           ghcide-src = pkgs.fetchFromGitHub {
             owner  = "wz1000";
             repo   = "ghcide";
-            rev    = "cc09b6d4cf03efa645c682347c62850c2291be25";
-            sha256 = "0rifbrfvbgv7szgwc5apzb0i5fbkr2spzqvwg5kzng5b4zrf9a9d";
+            rev    = "747ec1401c62257ec849319eb2dda966a8008b09";
+            sha256 = "0j3cimas6fp3kkm5x8xr16xyznj39b28nm1h16a8ymfcrd07h2hi";
           };
 
           brittany-src = pkgs.fetchFromGitHub {
@@ -280,7 +280,7 @@ let
           lsp-test = self.callHackageDirect {
             pkg = "lsp-test";
             ver = "0.11.0.2";
-            sha256 = "0zgcp93y93h7rsg9dv202hf3l6sqr95iadd67lmfclb0npfs640z";
+            sha256 = "1jwvalwj3jblw32zig7d7d3251c6a3k3c2npvkypaslk3w2r8cq8";
           } {};
 
           shake = self.callHackageDirect {
