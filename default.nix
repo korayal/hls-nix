@@ -289,6 +289,12 @@ let
             sha256 = "14myzmdywbcwgx03f454ymf5zjirs7wj1bcnhhsf0w1ck122y8q3";
           } {};
 
+          parser-combinators = self.callHackageDirect {
+            pkg = "parser-combinators";
+            ver = "1.2.1";
+            sha256 = "1990d6c1zm2wq4w9521bx7l3arg4ly02hq1ass9n19gs273bxx5h";
+          } {};
+
         };
     };
 in
