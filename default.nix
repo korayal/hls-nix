@@ -36,8 +36,8 @@ let
           hls-src = pkgs.fetchFromGitHub {
             owner  = "haskell";
             repo   = "haskell-language-server";
-            rev    = "77c31c37aceb822ceb5b60f11f4933419353c675";
-            sha256 = "0j8na4c791xnprnl1rhmwlv800q7svqca6bspi7kqwcmyzvc931h";
+            rev    = "768fdcd588f5c37839086c0d787d1cb7438de37b";
+            sha256 = "13j6jxl4ys2dhrw1kvc0l7n0mlfiy26fr2lkv7c0cm4npxzzsf8c";
           };
 
           ghcide-src = pkgs.fetchFromGitHub {
@@ -99,8 +99,8 @@ let
 
           ormolu = self.callHackageDirect {
             pkg = "ormolu";
-            ver = "0.0.5.0";
-            sha256 = "09zc5mra3n2kkbvvwvh7y0dh3fbs74i170xy66j90ndagqnfs16g";
+            ver = "0.1.2.0";
+            sha256 = "0ik09adifvj6pvqnak8a60plpmdma4h1l3vf82sz5mbzaf1zw4jx";
           } {};
 
           ghc-check = self.callHackageDirect {
@@ -123,8 +123,8 @@ let
 
           haddock-library = self.callHackageDirect {
             pkg = "haddock-library";
-            ver = "1.9.0";
-            sha256 = "12nr4qzas6fzn5p4ka27m5gs2rym0bgbfrym34yp0cd6rw9zdcl3";
+            ver = "1.8.0";
+            sha256 = "1hmfrfygazdkyxxgh2n2a0ff38c8p4bnlxpk9gia90jn0c5im2n5";
           } {};
 
           haddock-api = self.callHackageDirect {
@@ -175,6 +175,12 @@ let
             sha256 = "0x2ip8kn3sv599r7yc9dmdx7hgh5x632m45ga99ib5rnbn6kvn8x";
           } {};
 
+          regex-pcre-builtin = self.callHackageDirect {
+            pkg = "regex-pcre-builtin";
+            ver = "0.95.1.1.8.43";
+            sha256 = "0x2ip8kn3sv599r7yc9dmdx7hgh5x632m45ga99ib5rnbn6kvn8a";
+          } {};
+
           temporary = self.callHackageDirect {
             pkg = "temporary";
             ver = "1.2.1";
@@ -189,8 +195,8 @@ let
 
           extra = self.callHackageDirect {
             pkg = "extra";
-            ver = "1.7.3";
-            sha256 = "0n23dhsfjjdmprgmdsrrma8q8ys0zc4ab5vhzmiy2f9gkm0jg0pq";
+            ver = "1.7.2";
+            sha256 = "1sz6hnnas0ck01zkgcar7nl41nxa6s6vq6aa45534w76gy8dyqpv";
           } {};
 
           opentelemetry = self.callHackageDirect {
@@ -285,8 +291,8 @@ let
 
           shake = self.callHackageDirect {
             pkg = "shake";
-            ver = "0.19.1";
-            sha256 = "14myzmdywbcwgx03f454ymf5zjirs7wj1bcnhhsf0w1ck122y8q3";
+            ver = "0.18.5";
+            sha256 = "0p9gb2px0k3jcdqgb8d7gdfh9swj1vchcs70r6sp5zkwrzzxlcaf";
           } {};
 
           parser-combinators = self.callHackageDirect {
@@ -294,6 +300,19 @@ let
             ver = "1.2.1";
             sha256 = "1990d6c1zm2wq4w9521bx7l3arg4ly02hq1ass9n19gs273bxx5h";
           } {};
+
+          fuzzy = self.callHackageDirect {
+            pkg = "fuzzy";
+            ver = "0.1.0.0";
+            sha256 = "0735ciar58q93gl8px5bqhwqhl9dvbcii5dgpy80ch44kis93nmn";
+          } {};
+
+          tasty-rerun = self.callHackageDirect {
+            pkg = "tasty-rerun";
+            ver = "1.1.17";
+            sha256 = "1990d6c1zm2wq4w9521bx7l3arg4ly02hq1ass9n19gs273bxx5b";
+          } {};
+
 
         };
     };
