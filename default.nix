@@ -36,15 +36,15 @@ let
           hls-src = pkgs.fetchFromGitHub {
             owner  = "haskell";
             repo   = "haskell-language-server";
-            rev    = "768fdcd588f5c37839086c0d787d1cb7438de37b";
-            sha256 = "13j6jxl4ys2dhrw1kvc0l7n0mlfiy26fr2lkv7c0cm4npxzzsf8c";
+            rev    = "acaba0573d6df9764981aba282cb53a7a68e12f4";
+            sha256 = "1f2188m7anxxk8cnkfz7qcq1rgsgw4hihnd92h4maycicl6qr5j3";
           };
 
           ghcide-src = pkgs.fetchFromGitHub {
-            owner  = "wz1000";
+            owner  = "fendor";
             repo   = "ghcide";
-            rev    = "747ec1401c62257ec849319eb2dda966a8008b09";
-            sha256 = "0j3cimas6fp3kkm5x8xr16xyznj39b28nm1h16a8ymfcrd07h2hi";
+            rev    = "8530b980871f9bc4f6fc2e688a4620e5fe1a0340";
+            sha256 = "12hqqi2qf0bnl8ap6bvc7nzz4d6817qf0kpkj7iimhbsn73fkqkv";
           };
 
           brittany-src = pkgs.fetchFromGitHub {
@@ -93,8 +93,8 @@ let
 
           hie-bios = self.callHackageDirect {
             pkg = "hie-bios";
-            ver = "0.5.0";
-            sha256 = "116nmpva5jmlgc2dgy8cm5wv6cinhzmga1l0432p305074w720r2";
+            ver = "0.6.1";
+            sha256 = "0yw8yqy1bm7k8n9n2h4jm0kvndbq6mv8snlf7iy2c977cb35nr1l";
           } {};
 
           ormolu = self.callHackageDirect {
