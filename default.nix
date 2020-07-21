@@ -36,15 +36,15 @@ let
           hls-src = pkgs.fetchFromGitHub {
             owner  = "haskell";
             repo   = "haskell-language-server";
-            rev    = "acaba0573d6df9764981aba282cb53a7a68e12f4";
-            sha256 = "1f2188m7anxxk8cnkfz7qcq1rgsgw4hihnd92h4maycicl6qr5j3";
+            rev    = "0c99ce0411ed7bc3d43aa8a29c75f1e1fd9ee2bd";
+            sha256 = "04859l7vw1a5w0blx5b93w6gg8njzbxwv4x7am2dlbjgqd3gv5pi";
           };
 
           ghcide-src = pkgs.fetchFromGitHub {
-            owner  = "fendor";
+            owner  = "bubba";
             repo   = "ghcide";
-            rev    = "8530b980871f9bc4f6fc2e688a4620e5fe1a0340";
-            sha256 = "12hqqi2qf0bnl8ap6bvc7nzz4d6817qf0kpkj7iimhbsn73fkqkv";
+            rev    = "7e895cfa53260b41996df707baec496a8f2c75dc";
+            sha256 = "1kj2i86mkaxgxlrbmv2d24mch7hywgcy2n61z8paj21chncs1j5w";
           };
 
           brittany-src = pkgs.fetchFromGitHub {
