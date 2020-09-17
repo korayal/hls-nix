@@ -36,15 +36,15 @@ let
           hls-src = pkgs.fetchFromGitHub {
             owner  = "haskell";
             repo   = "haskell-language-server";
-            rev    = "17b23351f82129547ef4c926000933cb58caa53d";
-            sha256 = "09r0xqzxh9z6brf0bzi69vq0z2qmkribdikb6n75z5pba1n766y7";
+            rev    = "b43a8cd78d10d77184a895293d766a0fbceb5573";
+            sha256 = "19c0k56fqpp2rr09amgravsirpxwy4l6jiwn6yd7p9a7553n4zjx";
           };
 
           ghcide-src = pkgs.fetchFromGitHub {
-            owner  = "bubba";
+            owner  = "haskell";
             repo   = "ghcide";
-            rev    = "078e3d3c0d319f83841ccbcdc60ff5f0e243f6be";
-            sha256 = "1zq7ngaak8il91a309rl51dghzasnk4m2sm3av6d93cyqyra1hfc";
+            rev    = "bfe35e60cc5c5cf2a2bb73ca80d6b089c3ae5731";
+            sha256 = "0722pglbfwxq5vl7a616cy3c71hmfr4avmclkg3msn0srjb69c5q";
           };
 
           brittany-src = pkgs.fetchFromGitHub {
@@ -79,6 +79,8 @@ let
         {
           mkDerivation = disableOptionalHaskellBuildSteps super;
 
+          hls-plugin-api = self.callCabal2nix "hls-plugin-api" "${hls-src}/hls-plugin-api" {};
+
           haskell-language-server = hlib.justStaticExecutables (self.callCabal2nix "haskell-language-server" hls-src {});
 
           ghcide = self.callCabal2nix "ghcide" ghcide-src {};
@@ -111,8 +113,8 @@ let
 
           hie-bios = self.callHackageDirect {
             pkg = "hie-bios";
-            ver = "0.6.1";
-            sha256 = "0yw8yqy1bm7k8n9n2h4jm0kvndbq6mv8snlf7iy2c977cb35nr1l";
+            ver = "0.7.1";
+            sha256 = "137f1dy0fmlrzngwcmgnxghcih7f2rfq5bdnizbwy9534dn4dr42";
           } {};
 
           ormolu = self.callHackageDirect {
@@ -129,14 +131,20 @@ let
 
           ghc-lib-parser = self.callHackageDirect {
             pkg = "ghc-lib-parser";
-            ver = "8.10.1.20200523";
-            sha256 = "1fnhqb9l0cg58lalrrn4ms48rnnzlyb7dqa9h2g21m9287q5y6gs";
+            ver = "8.10.2.20200808";
+            sha256 = "1yghr9c5r362ij06gkial7lzy54532j3m0p4g7vxn7rcfkvr5lzn";
           } {};
 
-          ghc-parser-ex = self.callHackageDirect {
-            pkg = "ghc-parser-ex";
-            ver = "8.10.0.4";
-            sha256 = "08gb6v5316m4xy1kclzbkr6bqrlg2lh0kplzg5lzsdx93bwcjyzb";
+          ghc-lib-parser-ex = self.callHackageDirect {
+            pkg = "ghc-lib-parser-ex";
+            ver = "8.10.0.16";
+            sha256 = "08gb6v5316m4xy1kclzbkr6bqrlg2lh0kplzg5lzsdx93bwcjyza";
+          } {};
+
+          ghc-source-gen = self.callHackageDirect {
+            pkg = "ghc-source-gen";
+            ver = "0.4.0.0";
+            sha256 = "0b7h369h1wcdmm5bx5vp4is2k9biczz0d8711sibfzj70h0yvxmm";
           } {};
 
           haddock-library = self.callHackageDirect {
@@ -291,8 +299,8 @@ let
 
           lsp-test = self.callHackageDirect {
             pkg = "lsp-test";
-            ver = "0.11.0.4";
-            sha256 = "17lab7rfxsfnzqvb2fvgvj2wcygn11hybal7kazykvgnnxfm7fch";
+            ver = "0.11.0.5";
+            sha256 = "12vsqkijpn06ma0h9w0px35x2fhb3cfmnhfj6sg3z87cnwv7k1wb";
           } {};
 
           shake = self.callHackageDirect {
@@ -335,6 +343,24 @@ let
             pkg = "yaml";
             ver = "0.11.4.0";
             sha256 = "1qwc9n85plnx80rfips7kafp0flznazqwwazsidcf96fg6bzfndf";
+          } {};
+
+          refinery = self.callHackageDirect {
+            pkg = "refinery";
+            ver = "0.1.0.0";
+            sha256 = "16dymz5cvh7d60qv3a7yxsr5pp7bx9sc43d6kz2k3vf33bqjgd4x";
+          } {};
+
+          implicit-hie-cradle = self.callHackageDirect {
+            pkg = "implicit-hie-cradle";
+            ver = "0.2.0.0";
+            sha256 = "1x553pp3lx1k4m28qrdl8ihj2gkiraaqw32y1zf7x2vm5mksh3bs";
+          } {};
+
+          implicit-hie = self.callHackageDirect {
+            pkg = "implicit-hie";
+            ver = "0.1.1.0";
+            sha256 = "1pnsc76zyzjj3zxxgl3jv6j23jdn1p35a7sw5i2l9202jj0v90pv";
           } {};
 
         };
