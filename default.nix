@@ -36,15 +36,15 @@ let
           hls-src = pkgs.fetchFromGitHub {
             owner  = "haskell";
             repo   = "haskell-language-server";
-            rev    = "b43a8cd78d10d77184a895293d766a0fbceb5573";
-            sha256 = "19c0k56fqpp2rr09amgravsirpxwy4l6jiwn6yd7p9a7553n4zjx";
+            rev    = "559c384e998b363aaaff6a0021e323fbf57f9e0c";
+            sha256 = "1mpmfv8d7bh2y90zia5hgw86y2n2nanlk6agxxrqgg34r821s166";
           };
 
           ghcide-src = pkgs.fetchFromGitHub {
             owner  = "haskell";
             repo   = "ghcide";
-            rev    = "bfe35e60cc5c5cf2a2bb73ca80d6b089c3ae5731";
-            sha256 = "0722pglbfwxq5vl7a616cy3c71hmfr4avmclkg3msn0srjb69c5q";
+            rev    = "v0.4.0";
+            sha256 = "0cfa4m23w761cmj0ibahlxcr72an2s3vixzhff4hds5baacn5lqf";
           };
 
           brittany-src = pkgs.fetchFromGitHub {
@@ -57,8 +57,8 @@ let
           fourmolu-src = pkgs.fetchFromGitHub {
             owner  = "parsonsmatt";
             repo   = "fourmolu";
-            rev    = "1de072e6bf916dbb1d7c8caaf1946dfeb5c4a161";
-            sha256 = "0fcins4yama37zd84jrhc2g9289jss3k1sn0y0cir13kmi5i0h1k";
+            rev    = "53a57a3bd7bec4beabff4612276365f07edcdd97";
+            sha256 = "0z7njcz2m68qh27dlcn8dsgfq5p29pyrdq7y1zdnn5m4s8cday0f";
           };
 
           HsYAML-aeson-src = pkgs.fetchFromGitHub {
@@ -88,6 +88,8 @@ let
           brittany = self.callCabal2nix "brittany" brittany-src {};
 
           fourmolu = self.callCabal2nix "fourmolu" fourmolu-src {};
+
+          hls-tactics-plugin = self.callCabal2nix "hls-tactics-plugin" "${hls-src}/plugins/tactics" {};
 
           HsYAML-aeson = self.callCabal2nix "HsYAML-aeson" HsYAML-aeson-src {};
 
@@ -287,8 +289,8 @@ let
 
           stylish-haskell = self.callHackageDirect {
             pkg = "stylish-haskell";
-            ver = "0.11.0.3";
-            sha256 = "0rnvcil7i9z7ra2b4znsychlxdj6zm4capdzih1n1v0jp9xi31ac";
+            ver = "0.12.0.0";
+            sha256 = "1ylwxpbwjy7wd82d09v3m56x6smycxnclki778zjj6z989cgccp3";
           } {};
 
           HsYAML = self.callHackageDirect {
@@ -347,8 +349,8 @@ let
 
           refinery = self.callHackageDirect {
             pkg = "refinery";
-            ver = "0.1.0.0";
-            sha256 = "16dymz5cvh7d60qv3a7yxsr5pp7bx9sc43d6kz2k3vf33bqjgd4x";
+            ver = "0.3.0.0";
+            sha256 = "08s5pw6j3ncz96zfc2j0cna2zbf4vy7045d6jpzmq2sa161qnpgi";
           } {};
 
           implicit-hie-cradle = self.callHackageDirect {
@@ -359,8 +361,8 @@ let
 
           implicit-hie = self.callHackageDirect {
             pkg = "implicit-hie";
-            ver = "0.1.1.0";
-            sha256 = "1pnsc76zyzjj3zxxgl3jv6j23jdn1p35a7sw5i2l9202jj0v90pv";
+            ver = "0.1.2.0";
+            sha256 = "1pbzhng1ka6fim6lv6dhlhj240n1pb35zwn5sbzhmd4m7gln8rk9";
           } {};
 
         };
