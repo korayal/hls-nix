@@ -36,15 +36,15 @@ let
           hls-src = pkgs.fetchFromGitHub {
             owner  = "haskell";
             repo   = "haskell-language-server";
-            rev    = "16aceaf5e765002666cee671ea9f5017137a5f9b";
-            sha256 = "0nc2fj0zlvv85463jpfajwhb9nmhmyz4hij059a8gww8zk609xsm";
+            rev    = "61c69fd387281c2222f75f13542eaa2e91cbc1b1";
+            sha256 = "17l4mgs8hpaa133j8444zlzzxd9nlw3cr4a6i5440d59wk3ipkmd";
           };
 
           ghcide-src = pkgs.fetchFromGitHub {
             owner  = "haskell";
             repo   = "ghcide";
-            rev    = "dcf680402722e7660377bf7da3fca27c2bde988f";
-            sha256 = "0830wb28aca55iax6933z6wg0sxdshwkqlzvnn7khrqrf98wqv5v";
+            rev    = "9b8aaf9b06846571cc0b5d46680e686e4f9153a3";
+            sha256 = "0clwg8fgnsgwzl6rbni7p6xifl117f6h5hjsdyy0swnbjkxkqpaa";
           };
 
 
@@ -360,14 +360,14 @@ let
 
           implicit-hie-cradle = self.callHackageDirect {
             pkg = "implicit-hie-cradle";
-            ver = "0.2.0.1";
-            sha256 = "0wka62csnc4pqy0fj5b9h2vgzg24isfv8g6zaazrkyjql1gxmbay";
+            ver = "0.3.0.0";
+            sha256 = "0fc1zh3wrq3hrbh8l06a0cjpnzd3x03rgla7s93c1cbqaal4imix";
           } {};
 
           implicit-hie = self.callHackageDirect {
             pkg = "implicit-hie";
-            ver = "0.1.2.0";
-            sha256 = "1pbzhng1ka6fim6lv6dhlhj240n1pb35zwn5sbzhmd4m7gln8rk9";
+            ver = "0.1.2.3";
+            sha256 = "1f6dxcky15fjmvbar8pb7wnr8bmvvca9111igkf8v2ikz4494vdz";
           } {};
 
           apply-refact = self.callHackageDirect {
