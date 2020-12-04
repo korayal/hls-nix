@@ -7,6 +7,7 @@ let
 
 in
 { ghc ? "ghc865"
+, agpl ? true
 , pkgs ? import defaultNixpkgs {
     config = {
       allowUnfree = true; # allow unfree internal dependencies
@@ -26,6 +27,7 @@ let
     doHaddock = false;
     enableLibraryProfiling = false;
     enableExecutableProfiling = false;
+    configureFlags = if agpl then [] else ["-f-agpl"];
   });
 
 
@@ -48,12 +50,12 @@ let
           };
 
 
-          brittany-src = pkgs.fetchFromGitHub {
+          brittany-src = if agpl then pkgs.fetchFromGitHub {
             owner  = "bubba";
             repo   = "brittany";
             rev    = "c59655f10d5ad295c2481537fc8abf0a297d9d1c";
             sha256 = "1rkk09f8750qykrmkqfqbh44dbx1p8aq1caznxxlw8zqfvx39cxl";
-          };
+          } else null;
 
           HsYAML-aeson-src = pkgs.fetchFromGitHub {
             owner  = "hvr";
@@ -82,7 +84,7 @@ let
 
           ghcide = self.callCabal2nix "ghcide" ghcide-src {};
 
-          brittany = self.callCabal2nix "brittany" brittany-src {};
+          brittany = if agpl then self.callCabal2nix "brittany" brittany-src {} else null;
 
           HsYAML-aeson = self.callCabal2nix "HsYAML-aeson" HsYAML-aeson-src {};
 
