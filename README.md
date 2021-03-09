@@ -1,3 +1,5 @@
+**NOTE**: This repository is not (or may not always be) very up-to-date and the fastest way to get your hands on Haskell Language Server on Nix is [easy-hls-nix](https://github.com/jkachmar/easy-hls-nix). 
+
 # hls-nix
 
 A nix-buildable derivation for [haskell-language-server](https://github.com/haskell/haskell-language-server)
