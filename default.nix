@@ -1,4 +1,5 @@
 let
+
   defaultNixpkgs = fetchTarball {
     # a recent-ish SHA from the release-21.05 branch
     url = "https://github.com/NixOS/nixpkgs/archive/60f3e3675b13f5c9d788f54939ac747bb66e6ff9.tar.gz";
@@ -19,7 +20,7 @@ in
 }:
 let
   hlib = pkgs.haskell.lib;
-
+  inherit (pkgs.lib) fakeSha256;
   disableOptionalHaskellBuildSteps = super: args: super.mkDerivation (args // {
     doCheck = false;
     doBenchmark = false;
@@ -30,7 +31,6 @@ let
     configureFlags = if agpl then [] else ["-f-agpl"];
   });
 
-
   hpkgs = pkgs.haskell.packages.${ghc}.override
     {
       overrides = self: super:
@@ -38,8 +38,8 @@ let
           hls-src = pkgs.fetchFromGitHub {
             owner  = "haskell";
             repo   = "haskell-language-server";
-            rev    = "0d9ba1548a15c427963cde7f1635316c1d5ea179";
-            sha256 = "1881fmnc06b60qnckjpy7swy6rzzaarfzsis4as8kiczx7gjs5va";
+            rev    = "2857eeece0398e1cd4b2ffb6069b05c4d2308b39";
+            sha256 = "03wf1sfbk3z3m3wnr36shvsn1axw8aidmd0j6f0mk4n95ff0pwn1";
           };
 
           ghc-api-compat-src = pkgs.fetchFromGitHub {
@@ -66,6 +66,7 @@ let
           hls-plugin-api = self.callCabal2nix "hls-plugin-api" "${hls-src}/hls-plugin-api" {};
 
           hls-brittany-plugin = self.callCabal2nix "hls-brittany-plugin" "${hls-src}/plugins/hls-brittany-plugin" {};
+          hls-call-hierarchy-plugin = self.callCabal2nix "hls-call-hierarchy-plugin" "${hls-src}/plugins/hls-call-hierarchy-plugin" {};
           hls-class-plugin = self.callCabal2nix "hls-class-plugin" "${hls-src}/plugins/hls-class-plugin" {};
           hls-eval-plugin = self.callCabal2nix "hls-eval-plugin" "${hls-src}/plugins/hls-eval-plugin" {};
           hls-explicit-imports-plugin = self.callCabal2nix "hls-explicit-imports-plugin" "${hls-src}/plugins/hls-explicit-imports-plugin" {};
@@ -126,8 +127,8 @@ let
 
           refinery = self.callHackageDirect {
             pkg = "refinery";
-            ver = "0.3.0.0";
-            sha256 = "08s5pw6j3ncz96zfc2j0cna2zbf4vy7045d6jpzmq2sa161qnpgi";
+            ver = "0.4.0.0";
+            sha256 = "1ic7qvfizh5av3b3hp8db08v6b0hmac20smyhbaqzwvfpdgnjq71";
           } {};
 
           ormolu = self.callCabal2nix "ormolu" ormolu-src {};
@@ -152,10 +153,45 @@ let
 
           lsp-test = self.callHackageDirect {
             pkg = "lsp-test";
-            ver = "0.14.0.0";
-            sha256 = "1yx1vzypnc4m23viwkvi07n24k2bbksvgyvrmz9vfrjr0iafgf3k";
+            ver = "0.14.0.1";
+            sha256 = "10lnyg7nlbd3ymgvjjlrkfndyy7ay9cwnsk684p08k2gzlric4yq";
           } {};
 
+          lsp-types = self.callHackageDirect {
+            pkg = "lsp-types";
+            ver = "1.3.0.0";
+            sha256 = "0qajyyj2d51daa4y0pqaa87n4nny0i920ivvzfnrk9gq9386iac7";
+          } {};
+
+          lsp = self.callHackageDirect {
+            pkg = "lsp";
+            ver = "1.2.0.1";
+            sha256 = "1lhzsraiw11ldxvxn8ax11hswpyzsvw2da2qmp3p6fc9rfpz4pj5";
+          } {};
+
+          hiedb = self.callHackageDirect {
+            pkg = "hiedb";
+            ver = "0.4.0.0";
+            sha256 = "13jz8c46zfpf54ya2wsv4akhn0wcfc6qjazqsjfir5gpvsi7v8xr";
+          } {};
+
+          implicit-hie-cradle = self.callHackageDirect {
+            pkg = "implicit-hie-cradle";
+            ver = "0.3.0.5";
+            sha256 = "15a7g9x6cjk2b92hb2wilxx4550msxp1pmk5a2shiva821qaxnfq";
+          } {};
+
+          implicit-hie = self.callHackageDirect {
+            pkg = "implicit-hie";
+            ver = "0.1.2.6";
+            sha256 = "067bmw5b9qg55ggklbfyf93jgpkbzmprmgv906jscfzvv1h8266c";
+          } {};
+
+          ghc-source-gen = self.callHackageDirect {
+            pkg = "ghc-source-gen";
+            ver = "0.4.1.0";
+            sha256 = "0kk599vk54ckikpxkzwrbx7z5x0xr20hr179rldmnlb34bf9mpnk";
+          } {};
         };
     };
 in
