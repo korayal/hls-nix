@@ -38,15 +38,8 @@ let
           hls-src = pkgs.fetchFromGitHub {
             owner  = "haskell";
             repo   = "haskell-language-server";
-            rev    = "e7c5e90b6df5dff2760d76169eddaea3bdd6a831";
-            sha256 = "1c5dayxvw00k4vfsfxg955ww32mcfx46124x386nabqzjz7d2cs6";
-          };
-
-          lsp-src = pkgs.fetchFromGitHub {
-            owner  = "haskell";
-            repo   = "lsp";
-            rev    = "ef59c28b41ed4c5775f0ab0c1e985839359cec96";
-            sha256 = "1whcgw4hhn2aplrpy9w8q6rafwy7znnp0rczgr6py15fqyw2fwb5";
+            rev    = "10a0edb878cb151e5e237c3203d042e416dca0f4";
+            sha256 = "0h5lvkv8ygpi9kwrd76sfcrhk2qjc5q59a91xl0wdcgdl9iik4xr";
           };
 
           ghc-api-compat-src = pkgs.fetchFromGitHub {
@@ -67,10 +60,6 @@ let
         {
           mkDerivation = disableOptionalHaskellBuildSteps super;
 
-          lsp = self.callCabal2nix "lsp" "${lsp-src}/lsp" {};
-          lsp-types = self.callCabal2nix "lsp-types" "${lsp-src}/lsp-types" {};
-          lsp-test = self.callCabal2nix "lsp-test" "${lsp-src}/lsp-test" {};
-
           ghcide = self.callCabal2nix "ghcide" "${hls-src}/ghcide" {};
           hie-compat = self.callCabal2nix "hie-compat" "${hls-src}/hie-compat" {};
           hls-graph = self.callCabal2nix "hls-graph" "${hls-src}/hls-graph" {};
@@ -89,6 +78,7 @@ let
           hls-ormolu-plugin = self.callCabal2nix "hls-ormolu-plugin" "${hls-src}/plugins/hls-ormolu-plugin" {};
           hls-pragmas-plugin = self.callCabal2nix "hls-pragmas-plugin" "${hls-src}/plugins/hls-pragmas-plugin" {};
           hls-refine-imports-plugin = self.callCabal2nix "hls-refine-imports-plugin" "${hls-src}/plugins/hls-refine-imports-plugin" {};
+          hls-rename-plugin = self.callCabal2nix "hls-rename-plugin" "${hls-src}/plugins/hls-rename-plugin" {};
           hls-retrie-plugin = self.callCabal2nix "hls-retrie-plugin" "${hls-src}/plugins/hls-retrie-plugin" {};
           hls-splice-plugin = self.callCabal2nix "hls-splice-plugin" "${hls-src}/plugins/hls-splice-plugin" {};
           hls-stylish-haskell-plugin = self.callCabal2nix "hls-stylish-haskell-plugin" "${hls-src}/plugins/hls-stylish-haskell-plugin" {};
@@ -184,6 +174,24 @@ let
             pkg = "ghc-source-gen";
             ver = "0.4.1.0";
             sha256 = "0kk599vk54ckikpxkzwrbx7z5x0xr20hr179rldmnlb34bf9mpnk";
+          } {};
+
+          lsp-test = self.callHackageDirect {
+            pkg = "lsp-test";
+            ver = "0.14.0.1";
+            sha256 = "10lnyg7nlbd3ymgvjjlrkfndyy7ay9cwnsk684p08k2gzlric4yq";
+          } {};
+
+          lsp-types = self.callHackageDirect {
+            pkg = "lsp-types";
+            ver = "1.3.0.1";
+            sha256 = "19k28zf1vw60wqfxllcs7zk9j6lnkx5kkvjnh22vkvn6m9zzflyw";
+          } {};
+
+          lsp = self.callHackageDirect {
+            pkg = "lsp";
+            ver = "1.2.0.1";
+            sha256 = "1lhzsraiw11ldxvxn8ax11hswpyzsvw2da2qmp3p6fc9rfpz4pj5";
           } {};
         };
     };
