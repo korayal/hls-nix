@@ -38,8 +38,15 @@ let
           hls-src = pkgs.fetchFromGitHub {
             owner  = "haskell";
             repo   = "haskell-language-server";
-            rev    = "2857eeece0398e1cd4b2ffb6069b05c4d2308b39";
-            sha256 = "03wf1sfbk3z3m3wnr36shvsn1axw8aidmd0j6f0mk4n95ff0pwn1";
+            rev    = "e7c5e90b6df5dff2760d76169eddaea3bdd6a831";
+            sha256 = "1c5dayxvw00k4vfsfxg955ww32mcfx46124x386nabqzjz7d2cs6";
+          };
+
+          lsp-src = pkgs.fetchFromGitHub {
+            owner  = "haskell";
+            repo   = "lsp";
+            rev    = "ef59c28b41ed4c5775f0ab0c1e985839359cec96";
+            sha256 = "1whcgw4hhn2aplrpy9w8q6rafwy7znnp0rczgr6py15fqyw2fwb5";
           };
 
           ghc-api-compat-src = pkgs.fetchFromGitHub {
@@ -59,6 +66,10 @@ let
         in
         {
           mkDerivation = disableOptionalHaskellBuildSteps super;
+
+          lsp = self.callCabal2nix "lsp" "${lsp-src}/lsp" {};
+          lsp-types = self.callCabal2nix "lsp-types" "${lsp-src}/lsp-types" {};
+          lsp-test = self.callCabal2nix "lsp-test" "${lsp-src}/lsp-test" {};
 
           ghcide = self.callCabal2nix "ghcide" "${hls-src}/ghcide" {};
           hie-compat = self.callCabal2nix "hie-compat" "${hls-src}/hie-compat" {};
@@ -149,24 +160,6 @@ let
             pkg = "retrie";
             ver = "0.1.1.1";
             sha256 = "0gnp6j35jnk1gcglrymvvn13sawir0610vh0z8ya6599kyddmw7l";
-          } {};
-
-          lsp-test = self.callHackageDirect {
-            pkg = "lsp-test";
-            ver = "0.14.0.1";
-            sha256 = "10lnyg7nlbd3ymgvjjlrkfndyy7ay9cwnsk684p08k2gzlric4yq";
-          } {};
-
-          lsp-types = self.callHackageDirect {
-            pkg = "lsp-types";
-            ver = "1.3.0.0";
-            sha256 = "0qajyyj2d51daa4y0pqaa87n4nny0i920ivvzfnrk9gq9386iac7";
-          } {};
-
-          lsp = self.callHackageDirect {
-            pkg = "lsp";
-            ver = "1.2.0.1";
-            sha256 = "1lhzsraiw11ldxvxn8ax11hswpyzsvw2da2qmp3p6fc9rfpz4pj5";
           } {};
 
           hiedb = self.callHackageDirect {
