@@ -1,4 +1,4 @@
-**NOTE**: This repository is not (or may not always be) very up-to-date and the fastest way to get your hands on Haskell Language Server on Nix is [easy-hls-nix](https://github.com/jkachmar/easy-hls-nix). 
+**NOTE**: This repository is not (or may not always be) very up-to-date and the fastest way to get your hands on Haskell Language Server on Nix is [easy-hls-nix](https://github.com/jkachmar/easy-hls-nix).
 
 # hls-nix
 
@@ -19,5 +19,5 @@ $ cachix use korayal-hls
 Install with the command below:
 
 ```
-nix-env -iA hpkgs.haskell-language-server -f https://github.com/korayal/hls-nix/tarball/master
+nix-env -iA haskell-language-server -f https://github.com/korayal/hls-nix/tarball/master
 ```

@@ -38,15 +38,8 @@ let
           hls-src = pkgs.fetchFromGitHub {
             owner  = "haskell";
             repo   = "haskell-language-server";
-            rev    = "10a0edb878cb151e5e237c3203d042e416dca0f4";
-            sha256 = "0h5lvkv8ygpi9kwrd76sfcrhk2qjc5q59a91xl0wdcgdl9iik4xr";
-          };
-
-          ghc-api-compat-src = pkgs.fetchFromGitHub {
-            owner  = "hsyl20";
-            repo   = "ghc-api-compat";
-            rev    = "8fee87eac97a538dbe81ff1ab18cff10f2f9fa15";
-            sha256 = "16bibb7f3s2sxdvdy2mq6w1nj1lc8zhms54lwmj17ijhvjys29vg";
+            rev    = "ed67f2c4554faa8c1847624cfc853f8f7b9dbd57";
+            sha256 = "19h7xcd3s13bkzp8v87ryp2hx64n6a4pj0xkmdv8nzm3dwnh36y5";
           };
 
           ormolu-src = pkgs.fetchFromGitHub {
@@ -106,8 +99,6 @@ let
             sha256 = "0w03j3a5ma8li3hrn9xp49pmh9r4whxidm71x9c37x5p6igzihms";
           } {};
 
-          ghc-api-compat = self.callCabal2nix "ghc-api-compat" ghc-api-compat-src {};
-
           hlint = self.callHackageDirect {
             pkg = "hlint";
             ver = "3.2.7";
@@ -154,8 +145,8 @@ let
 
           hiedb = self.callHackageDirect {
             pkg = "hiedb";
-            ver = "0.4.0.0";
-            sha256 = "13jz8c46zfpf54ya2wsv4akhn0wcfc6qjazqsjfir5gpvsi7v8xr";
+            ver = "0.4.1.0";
+            sha256 = "11s7lfkd6fc3zf3kgyp3jhicbhxpn6jp0yjahl8d28hicwr2qdpi";
           } {};
 
           implicit-hie-cradle = self.callHackageDirect {
@@ -197,6 +188,5 @@ let
     };
 in
 {
-  inherit hpkgs;
-  inherit pkgs;
+  inherit (hpkgs) haskell-language-server;
 }
