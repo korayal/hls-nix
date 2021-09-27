@@ -1,13 +1,13 @@
 let
 
   defaultNixpkgs = fetchTarball {
-    # a recent-ish SHA from the release-21.05 branch
-    url = "https://github.com/NixOS/nixpkgs/archive/60f3e3675b13f5c9d788f54939ac747bb66e6ff9.tar.gz";
-    sha256 = "1azmrhhpa8q37zvyj0g4faq8ibill8hgbdlf337y2np2qigciwgm";
+    # a recent-ish SHA from the nixos-21.05 branch
+    url = "https://github.com/NixOS/nixpkgs/archive/8e1306519d5d820c3144089a3bbbc16991f4c1e3.tar.gz";
+    sha256 = "1zhqzqchf8kw8zqp2yrd6zaa9wxm6n9cz9isnlqbmycnn0xpga08";
   };
 
 in
-{ ghc ? "ghc8104"
+{ ghc ? "ghc8107"
 , agpl ? true
 , pkgs ? import defaultNixpkgs {
     config = {
@@ -38,16 +38,16 @@ let
           hls-src = pkgs.fetchFromGitHub {
             owner  = "haskell";
             repo   = "haskell-language-server";
-            rev    = "ed67f2c4554faa8c1847624cfc853f8f7b9dbd57";
-            sha256 = "19h7xcd3s13bkzp8v87ryp2hx64n6a4pj0xkmdv8nzm3dwnh36y5";
+            rev    = "682386d1c97ff98463f2cac260a8fe7aab099ebd";
+            sha256 = "1dn5ilhi6llqcadg4lf1im37mppihnc67x1gpq2hpqgid9kak1a3";
           };
 
-          ormolu-src = pkgs.fetchFromGitHub {
-            owner  = "tweag";
-            repo   = "ormolu";
-            rev    = "98617071305f996ad10a6b767ca0c2ae65b1da39";
-            sha256 = "1camqj1pmr383w6lpvgd2fhvwvbz3iyvflislr0ja6gig2p2lhca";
-          };
+          # ormolu-src = pkgs.fetchFromGitHub {
+          #   owner  = "tweag";
+          #   repo   = "ormolu";
+          #   rev    = "98617071305f996ad10a6b767ca0c2ae65b1da39";
+          #   sha256 = "1camqj1pmr383w6lpvgd2fhvwvbz3iyvflislr0ja6gig2p2lhca";
+          # };
 
         in
         {
@@ -71,7 +71,6 @@ let
           hls-ormolu-plugin = self.callCabal2nix "hls-ormolu-plugin" "${hls-src}/plugins/hls-ormolu-plugin" {};
           hls-pragmas-plugin = self.callCabal2nix "hls-pragmas-plugin" "${hls-src}/plugins/hls-pragmas-plugin" {};
           hls-refine-imports-plugin = self.callCabal2nix "hls-refine-imports-plugin" "${hls-src}/plugins/hls-refine-imports-plugin" {};
-          hls-rename-plugin = self.callCabal2nix "hls-rename-plugin" "${hls-src}/plugins/hls-rename-plugin" {};
           hls-retrie-plugin = self.callCabal2nix "hls-retrie-plugin" "${hls-src}/plugins/hls-retrie-plugin" {};
           hls-splice-plugin = self.callCabal2nix "hls-splice-plugin" "${hls-src}/plugins/hls-splice-plugin" {};
           hls-stylish-haskell-plugin = self.callCabal2nix "hls-stylish-haskell-plugin" "${hls-src}/plugins/hls-stylish-haskell-plugin" {};
@@ -81,66 +80,28 @@ let
             configureFlags = ["--enable-executable-dynamic"];
           });
 
-          apply-refact = self.callHackageDirect {
-            pkg = "apply-refact";
-            ver = "0.9.3.0";
-            sha256 = "1jfq1aw91finlpq5nn7a96za4c8j13jk6jmx2867fildxwrik2qj";
-          } {};
-
           brittany = self.callHackageDirect {
             pkg = "brittany";
             ver = "0.13.1.2";
             sha256 = "1b9bl2y4lvbs0vsaw86z413hpk649cxr399yshpwf2xqpgcw9c72";
           } {};
 
-          Cabal = self.callHackageDirect {
-            pkg = "Cabal";
-            ver = "3.0.2.0";
-            sha256 = "0w03j3a5ma8li3hrn9xp49pmh9r4whxidm71x9c37x5p6igzihms";
+          bytestring-encoding = self.callHackageDirect {
+            pkg = "bytestring-encoding";
+            ver = "0.1.1.0";
+            sha256 = "0qwwwya0f6qrbnp25vhb6zc2sk2xixfgwiaaywys2c1dsyw4mhrz";
           } {};
 
-          hlint = self.callHackageDirect {
-            pkg = "hlint";
-            ver = "3.2.7";
-            sha256 = "1w3f0140c347kjhk6sbjh28p4gf4f1nrzp4rn589j3dkcb672l43";
+          floskell = self.callHackageDirect {
+            pkg = "floskell";
+            ver = "0.10.5";
+            sha256 = "1flhdky8df170i1f2n5q3d4f3swma47m9lqwmzr5cg4dgjk85vdr";
           } {};
 
-          ghc-lib = self.callHackageDirect {
-            pkg = "ghc-lib";
-            ver = "8.10.5.20210606";
-            sha256 = "1m65982m9vzkslk88krkl30kfcvjx2acx9lh8d2jcyw1ql32f0qa";
-          } {};
-
-          ghc-lib-parser = self.callHackageDirect {
-            pkg = "ghc-lib-parser";
-            ver = "8.10.5.20210606";
-            sha256 = "0kphq6x8n2krxbhjrs45z3jkvix262v16rw0x7dw412bidk0cz7r";
-          } {};
-
-          refinery = self.callHackageDirect {
-            pkg = "refinery";
-            ver = "0.4.0.0";
-            sha256 = "1ic7qvfizh5av3b3hp8db08v6b0hmac20smyhbaqzwvfpdgnjq71";
-          } {};
-
-          ormolu = self.callCabal2nix "ormolu" ormolu-src {};
-
-          optparse-applicative = self.callHackageDirect {
-            pkg = "optparse-applicative";
-            ver = "0.15.1.0";
-            sha256 = "1mii408cscjvids2xqdcy2p18dvanb0qc0q1bi7234r23wz60ajk";
-          } {};
-
-          ansi-terminal = self.callHackageDirect {
-            pkg = "ansi-terminal";
-            ver = "0.10.3";
-            sha256 = "1aa8lh7pl054kz7i59iym49s8w473nhdqgc3pq16cp5v4358hw5k";
-          } {};
-
-          retrie = self.callHackageDirect {
-            pkg = "retrie";
-            ver = "0.1.1.1";
-            sha256 = "0gnp6j35jnk1gcglrymvvn13sawir0610vh0z8ya6599kyddmw7l";
+          heap-size = self.callHackageDirect {
+            pkg = "heap-size";
+            ver = "0.3.0.1";
+            sha256 = "1lhzsraiw11ldxvxn8ax11hswpyzsvw2da2qmp3p6fc9rfpz4pja";
           } {};
 
           hiedb = self.callHackageDirect {
@@ -149,22 +110,22 @@ let
             sha256 = "11s7lfkd6fc3zf3kgyp3jhicbhxpn6jp0yjahl8d28hicwr2qdpi";
           } {};
 
-          implicit-hie-cradle = self.callHackageDirect {
-            pkg = "implicit-hie-cradle";
-            ver = "0.3.0.5";
-            sha256 = "15a7g9x6cjk2b92hb2wilxx4550msxp1pmk5a2shiva821qaxnfq";
-          } {};
-
           implicit-hie = self.callHackageDirect {
             pkg = "implicit-hie";
             ver = "0.1.2.6";
             sha256 = "067bmw5b9qg55ggklbfyf93jgpkbzmprmgv906jscfzvv1h8266c";
           } {};
 
-          ghc-source-gen = self.callHackageDirect {
-            pkg = "ghc-source-gen";
-            ver = "0.4.1.0";
-            sha256 = "0kk599vk54ckikpxkzwrbx7z5x0xr20hr179rldmnlb34bf9mpnk";
+          implicit-hie-cradle = self.callHackageDirect {
+            pkg = "implicit-hie-cradle";
+            ver = "0.3.0.5";
+            sha256 = "15a7g9x6cjk2b92hb2wilxx4550msxp1pmk5a2shiva821qaxnfq";
+          } {};
+
+          lsp = self.callHackageDirect {
+            pkg = "lsp";
+            ver = "1.2.0.1";
+            sha256 = "1lhzsraiw11ldxvxn8ax11hswpyzsvw2da2qmp3p6fc9rfpz4pj5";
           } {};
 
           lsp-test = self.callHackageDirect {
@@ -179,11 +140,85 @@ let
             sha256 = "19k28zf1vw60wqfxllcs7zk9j6lnkx5kkvjnh22vkvn6m9zzflyw";
           } {};
 
-          lsp = self.callHackageDirect {
-            pkg = "lsp";
-            ver = "1.2.0.1";
-            sha256 = "1lhzsraiw11ldxvxn8ax11hswpyzsvw2da2qmp3p6fc9rfpz4pj5";
+          monad-dijkstra = self.callHackageDirect {
+            pkg = "monad-dijkstra";
+            ver = "0.1.1.3";
+            sha256 = "0b8yj2p6f0h210hmp9pnk42jzrrhc4apa0d5a6hpa31g66jxigy8";
           } {};
+
+          optparse-applicative = self.callHackageDirect {
+            pkg = "optparse-applicative";
+            ver = "0.15.1.0";
+            sha256 = "1mii408cscjvids2xqdcy2p18dvanb0qc0q1bi7234r23wz60ajk";
+          } {};
+
+          refinery = self.callHackageDirect {
+            pkg = "refinery";
+            ver = "0.4.0.0";
+            sha256 = "1ic7qvfizh5av3b3hp8db08v6b0hmac20smyhbaqzwvfpdgnjq71";
+          } {};
+
+          retrie = self.callHackageDirect {
+            pkg = "retrie";
+            ver = "0.1.1.1";
+            sha256 = "0gnp6j35jnk1gcglrymvvn13sawir0610vh0z8ya6599kyddmw7l";
+          } {};
+
+          ansi-terminal = self.callHackageDirect {
+            pkg = "ansi-terminal";
+            ver = "0.10.3";
+            sha256 = "1aa8lh7pl054kz7i59iym49s8w473nhdqgc3pq16cp5v4358hw5k";
+          } {};
+
+          stylish-haskell = self.callHackageDirect {
+            pkg = "stylish-haskell";
+            ver = "0.12.2.0";
+            sha256 = "1ck8i550rvzbvzrm7dvgir73slai8zmvfppg3n5v4igi7y3jy0mr";
+          } {};
+
+          apply-refact = self.callHackageDirect {
+            pkg = "apply-refact";
+            ver = "0.9.3.0";
+            sha256 = "1jfq1aw91finlpq5nn7a96za4c8j13jk6jmx2867fildxwrik2qj";
+          } {};
+
+          ghc-source-gen = self.callHackageDirect {
+            pkg = "ghc-source-gen";
+            ver = "0.4.2.0";
+            sha256 = "1bsmvbjjnhfyc4axdx4rcksbdxv3sc4bskzfjr15r26p77rayram";
+          } {};
+
+          hlint = self.callHackageDirect {
+            pkg = "hlint";
+            ver = "3.2.7";
+            sha256 = "1w3f0140c347kjhk6sbjh28p4gf4f1nrzp4rn589j3dkcb672l43";
+          } {};
+
+          ghc-lib = self.callHackageDirect {
+            pkg = "ghc-lib";
+            ver = "8.10.7.20210828";
+            sha256 = "0gfsxck155nx97jsnzqskagmnwb8sx09h0k0vknbnsmipmmlm0s7";
+          } {};
+
+          ghc-lib-parser = self.callHackageDirect {
+            pkg = "ghc-lib-parser";
+            ver = "8.10.7.20210828";
+            sha256 = "0whpn8j63g6gfmmp9yz630zzqmabjm3k7m2zp1yzby8fywib4p1l";
+          } {};
+
+          # TODO enable this when all formatters support ghc-lib > 9
+          # ghc-lib = self.callHackageDirect {
+          #   pkg = "ghc-lib";
+          #   ver = "9.0.1.20210324";
+          #   sha256 = "0iv3y2gs6x5jgyybkb6h7p5z6qvhz7mjjcfxblnss89c96nlrdmm";
+          # } {};
+
+          # ghc-lib-parser = self.callHackageDirect {
+          #   pkg = "ghc-lib-parser";
+          #   ver = "9.0.1.20210324";
+          #   sha256 = "0kf45jnp62lwfv585c5rfpxw7ywbz92ivxx7h53nxqa1dw5di7qp";
+          # } {};
+
         };
     };
 in
