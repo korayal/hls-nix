@@ -38,8 +38,8 @@ let
           hls-src = pkgs.fetchFromGitHub {
             owner  = "haskell";
             repo   = "haskell-language-server";
-            rev    = "682386d1c97ff98463f2cac260a8fe7aab099ebd";
-            sha256 = "1dn5ilhi6llqcadg4lf1im37mppihnc67x1gpq2hpqgid9kak1a3";
+            rev    = "311107eabbf0537e0c192b2c377d282505b4eff1";
+            sha256 = "0z1r4ra7w4pnv6am6pppvsslgqmbmn3mxnpyc233rq7dbv0ly336";
           };
 
           # ormolu-src = pkgs.fetchFromGitHub {
@@ -206,6 +206,12 @@ let
             sha256 = "0whpn8j63g6gfmmp9yz630zzqmabjm3k7m2zp1yzby8fywib4p1l";
           } {};
 
+          prettyprinter = self.callHackageDirect {
+            pkg = "prettyprinter";
+            ver = "1.7.1";
+            sha256 = "0ddf0wb06sqipklh00ah3wazy37g8hnnm99n8g96xmwbhakmpaz2";
+          } {};
+
           # TODO enable this when all formatters support ghc-lib > 9
           # ghc-lib = self.callHackageDirect {
           #   pkg = "ghc-lib";
@@ -217,6 +223,18 @@ let
           #   pkg = "ghc-lib-parser";
           #   ver = "9.0.1.20210324";
           #   sha256 = "0kf45jnp62lwfv585c5rfpxw7ywbz92ivxx7h53nxqa1dw5di7qp";
+          # } {};
+
+          # ghc-lib-parser-ex = self.callHackageDirect {
+          #   pkg = "ghc-lib-parser-ex";
+          #   ver = "9.0.0.4";
+          #   sha256 = "0kf45jnp62lwfv585c5rfpxw7ywbz92ivxx7h53nxqa1dw5di7qa";
+          # } {};
+
+          # hlint = self.callHackageDirect {
+          #   pkg = "hlint";
+          #   ver = "3.3";
+          #   sha256 = "0kf45jnp62lwfv585c5rfpxw7ywbz92ivxx7h53nxqa1dw5di7qb";
           # } {};
 
         };
