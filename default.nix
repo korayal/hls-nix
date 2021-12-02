@@ -38,8 +38,8 @@ let
           hls-src = pkgs.fetchFromGitHub {
             owner  = "haskell";
             repo   = "haskell-language-server";
-            rev    = "311107eabbf0537e0c192b2c377d282505b4eff1";
-            sha256 = "0z1r4ra7w4pnv6am6pppvsslgqmbmn3mxnpyc233rq7dbv0ly336";
+            rev    = "745ef26f406dbdd5e4a538585f8519af9f1ccb09";
+            sha256 = "10vj4wb0gdvfnrg1d7r3dqjnkw34ryh7v4fvxsby6fvn1l2kvsj5";
           };
 
           # ormolu-src = pkgs.fetchFromGitHub {
