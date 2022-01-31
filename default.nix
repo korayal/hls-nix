@@ -38,8 +38,8 @@ let
           hls-src = pkgs.fetchFromGitHub {
             owner  = "haskell";
             repo   = "haskell-language-server";
-            rev    = "745ef26f406dbdd5e4a538585f8519af9f1ccb09";
-            sha256 = "10vj4wb0gdvfnrg1d7r3dqjnkw34ryh7v4fvxsby6fvn1l2kvsj5";
+            rev    = "f4022c5bb8530cd306c53b941878244bf27a5d41";
+            sha256 = "1b66mkql7bbljjspfd3gzbkbkd9448rk8xxdsnbbj0d5vj6vrl43";
           };
 
           # ormolu-src = pkgs.fetchFromGitHub {
@@ -58,6 +58,7 @@ let
           hls-graph = self.callCabal2nix "hls-graph" "${hls-src}/hls-graph" {};
           hls-plugin-api = self.callCabal2nix "hls-plugin-api" "${hls-src}/hls-plugin-api" {};
 
+          hls-alternate-number-format-plugin  = self.callCabal2nix "hls-tactics-plugin" "${hls-src}/plugins/hls-alternate-number-format-plugin" {};
           hls-brittany-plugin = self.callCabal2nix "hls-brittany-plugin" "${hls-src}/plugins/hls-brittany-plugin" {};
           hls-call-hierarchy-plugin = self.callCabal2nix "hls-call-hierarchy-plugin" "${hls-src}/plugins/hls-call-hierarchy-plugin" {};
           hls-class-plugin = self.callCabal2nix "hls-class-plugin" "${hls-src}/plugins/hls-class-plugin" {};
@@ -70,8 +71,10 @@ let
           hls-module-name-plugin = self.callCabal2nix "hls-module-name-plugin" "${hls-src}/plugins/hls-module-name-plugin" {};
           hls-ormolu-plugin = self.callCabal2nix "hls-ormolu-plugin" "${hls-src}/plugins/hls-ormolu-plugin" {};
           hls-pragmas-plugin = self.callCabal2nix "hls-pragmas-plugin" "${hls-src}/plugins/hls-pragmas-plugin" {};
+          hls-qualify-imported-names-plugin  = self.callCabal2nix "hls-tactics-plugin" "${hls-src}/plugins/hls-qualify-imported-names-plugin" {};
           hls-refine-imports-plugin = self.callCabal2nix "hls-refine-imports-plugin" "${hls-src}/plugins/hls-refine-imports-plugin" {};
           hls-retrie-plugin = self.callCabal2nix "hls-retrie-plugin" "${hls-src}/plugins/hls-retrie-plugin" {};
+          hls-selection-range-plugin  = self.callCabal2nix "hls-tactics-plugin" "${hls-src}/plugins/hls-selection-range-plugin" {};
           hls-splice-plugin = self.callCabal2nix "hls-splice-plugin" "${hls-src}/plugins/hls-splice-plugin" {};
           hls-stylish-haskell-plugin = self.callCabal2nix "hls-stylish-haskell-plugin" "${hls-src}/plugins/hls-stylish-haskell-plugin" {};
           hls-tactics-plugin  = self.callCabal2nix "hls-tactics-plugin" "${hls-src}/plugins/hls-tactics-plugin" {};
@@ -124,20 +127,20 @@ let
 
           lsp = self.callHackageDirect {
             pkg = "lsp";
-            ver = "1.2.0.1";
-            sha256 = "1lhzsraiw11ldxvxn8ax11hswpyzsvw2da2qmp3p6fc9rfpz4pj5";
+            ver = "1.4.0.0";
+            sha256 = "0rvk6ib9iqplz8xm09j05jx0m0aq82iqs4lzdikkxxk1shf8vk1r";
           } {};
 
           lsp-test = self.callHackageDirect {
             pkg = "lsp-test";
-            ver = "0.14.0.1";
-            sha256 = "10lnyg7nlbd3ymgvjjlrkfndyy7ay9cwnsk684p08k2gzlric4yq";
+            ver = "0.14.0.2";
+            sha256 = "1nnwlv8rix4rplxbpddzvzc544gby7rax8hcj2yxnaddgr09ps90";
           } {};
 
           lsp-types = self.callHackageDirect {
             pkg = "lsp-types";
-            ver = "1.3.0.1";
-            sha256 = "19k28zf1vw60wqfxllcs7zk9j6lnkx5kkvjnh22vkvn6m9zzflyw";
+            ver = "1.4.0.1";
+            sha256 = "1madyfv9jz87v1vrj3h803v3nijb75b7xbqzlyzwxb12k2x3hs0w";
           } {};
 
           monad-dijkstra = self.callHackageDirect {
@@ -160,8 +163,8 @@ let
 
           retrie = self.callHackageDirect {
             pkg = "retrie";
-            ver = "0.1.1.1";
-            sha256 = "0gnp6j35jnk1gcglrymvvn13sawir0610vh0z8ya6599kyddmw7l";
+            ver = "1.1.0.0";
+            sha256 = "0wbqwgmq1lyk23i5lqmi5hyysqg8da2gp6phvp0xl1hxwf120zya";
           } {};
 
           ansi-terminal = self.callHackageDirect {
@@ -190,8 +193,8 @@ let
 
           hlint = self.callHackageDirect {
             pkg = "hlint";
-            ver = "3.2.7";
-            sha256 = "1w3f0140c347kjhk6sbjh28p4gf4f1nrzp4rn589j3dkcb672l43";
+            ver = "3.2.8";
+            sha256 = "0n60b9apyapdxfr29wlgb22fgcaph0am435n67v4swv5pd0zzjcw";
           } {};
 
           ghc-lib = self.callHackageDirect {
@@ -210,6 +213,30 @@ let
             pkg = "prettyprinter";
             ver = "1.7.1";
             sha256 = "0ddf0wb06sqipklh00ah3wazy37g8hnnm99n8g96xmwbhakmpaz2";
+          } {};
+
+          extra = self.callHackageDirect {
+            pkg = "extra";
+            ver = "1.7.10";
+            sha256 = "0bwmh688fzldq732qrzjrzfhra1fjsphij675mw63s5nq2lmp1xx";
+          } {};
+
+          hie-bios = self.callHackageDirect {
+            pkg = "hie-bios";
+            ver = "0.8.0";
+            sha256 = "0qij4nw78qifsl2yyvkgk04wa28rvc9gm1xm0vcx8yh140grdk56";
+          } {};
+
+          stm-containers = self.callHackageDirect {
+            pkg = "stm-containers";
+            ver = "1.2";
+            sha256 = "07jq8rj49pbhn5sgzrk2ycyq8j7d8g0yrxymir5yhi5y1b702bzg";
+          } {};
+
+          stm-hamt = self.callHackageDirect {
+            pkg = "stm-hamt";
+            ver = "1.2.0.6";
+            sha256 = "0rmzvjmc2w3mnvw6syw5mr32pjasm4aqicsh2kldvydnh9lgy5ld";
           } {};
 
           # TODO enable this when all formatters support ghc-lib > 9
