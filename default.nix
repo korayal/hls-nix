@@ -38,8 +38,8 @@ let
           hls-src = pkgs.fetchFromGitHub {
             owner  = "haskell";
             repo   = "haskell-language-server";
-            rev    = "f4022c5bb8530cd306c53b941878244bf27a5d41";
-            sha256 = "1b66mkql7bbljjspfd3gzbkbkd9448rk8xxdsnbbj0d5vj6vrl43";
+            rev    = "b5a37f7fc360596899cb2945f363030f44156415";
+            sha256 = "sha256-uiwsfh/K3IABZDYj7JUZNIAPRVqH6g/r8X6QKg8DrZE=";
           };
 
           # ormolu-src = pkgs.fetchFromGitHub {
@@ -61,6 +61,7 @@ let
           hls-alternate-number-format-plugin  = self.callCabal2nix "hls-tactics-plugin" "${hls-src}/plugins/hls-alternate-number-format-plugin" {};
           hls-brittany-plugin = self.callCabal2nix "hls-brittany-plugin" "${hls-src}/plugins/hls-brittany-plugin" {};
           hls-call-hierarchy-plugin = self.callCabal2nix "hls-call-hierarchy-plugin" "${hls-src}/plugins/hls-call-hierarchy-plugin" {};
+          hls-change-type-signature-plugin = self.callCabal2nix "hls-change-type-signature-plugin" "${hls-src}/plugins/hls-change-type-signature-plugin" {};
           hls-class-plugin = self.callCabal2nix "hls-class-plugin" "${hls-src}/plugins/hls-class-plugin" {};
           hls-eval-plugin = self.callCabal2nix "hls-eval-plugin" "${hls-src}/plugins/hls-eval-plugin" {};
           hls-explicit-imports-plugin = self.callCabal2nix "hls-explicit-imports-plugin" "${hls-src}/plugins/hls-explicit-imports-plugin" {};
@@ -73,6 +74,7 @@ let
           hls-pragmas-plugin = self.callCabal2nix "hls-pragmas-plugin" "${hls-src}/plugins/hls-pragmas-plugin" {};
           hls-qualify-imported-names-plugin  = self.callCabal2nix "hls-tactics-plugin" "${hls-src}/plugins/hls-qualify-imported-names-plugin" {};
           hls-refine-imports-plugin = self.callCabal2nix "hls-refine-imports-plugin" "${hls-src}/plugins/hls-refine-imports-plugin" {};
+          hls-rename-plugin = self.callCabal2nix "hls-rename-plugin" "${hls-src}/plugins/hls-rename-plugin" {};
           hls-retrie-plugin = self.callCabal2nix "hls-retrie-plugin" "${hls-src}/plugins/hls-retrie-plugin" {};
           hls-selection-range-plugin  = self.callCabal2nix "hls-tactics-plugin" "${hls-src}/plugins/hls-selection-range-plugin" {};
           hls-splice-plugin = self.callCabal2nix "hls-splice-plugin" "${hls-src}/plugins/hls-splice-plugin" {};
@@ -223,8 +225,8 @@ let
 
           hie-bios = self.callHackageDirect {
             pkg = "hie-bios";
-            ver = "0.8.0";
-            sha256 = "0qij4nw78qifsl2yyvkgk04wa28rvc9gm1xm0vcx8yh140grdk56";
+            ver = "0.9.1";
+            sha256 = "sha256-5RqspT27rb/tMBwrKr4VfSSbq0+c0LMNuaKlTun0Kkk=";
           } {};
 
           stm-containers = self.callHackageDirect {
